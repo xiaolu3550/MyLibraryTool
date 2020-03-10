@@ -9,6 +9,9 @@
 
 
 
+    /**
+     * 在Application中添加
+     **/
     MyLibrary.getInstance()
     .init(Application)      //初始化
     .isDeBug(boolean);     //是否打印log信息
@@ -16,6 +19,9 @@
 
 #### 设置统一url请求:
 
+     /**
+        * 在Application中添加
+     **/
     public static RetrofitClient getClient() {
         return MyLibrary.getInstance().RetrofitConfig(url); //设置请求url头路径
     }
