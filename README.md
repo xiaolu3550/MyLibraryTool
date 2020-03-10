@@ -57,6 +57,7 @@
 ###### 上拉刷新与下拉加载
 
 `'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-12'`
+
 `'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-12'`
 
 ###### EventBus
