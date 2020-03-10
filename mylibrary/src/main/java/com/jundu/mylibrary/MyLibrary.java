@@ -33,7 +33,7 @@ public class MyLibrary {
         return this;
     }
 
-    public RetrofitClient RetrofitConfige(String url) {
+    public RetrofitClient RetrofitConfig(String url) {
         return RetrofitClient.getInstance().setBaseUrl(url);
     }
 }
