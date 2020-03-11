@@ -3,7 +3,6 @@ package com.jundu.mylibrary;
 import android.app.Application;
 
 import com.hjq.toast.ToastUtils;
-import com.jundu.mylibrary.helper.RetrofitHelper;
 import com.jundu.mylibrary.net.RetrofitClient;
 import com.socks.library.KLog;
 import com.tamsiree.rxtool.RxAppTool;

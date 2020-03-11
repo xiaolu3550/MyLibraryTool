@@ -2,7 +2,6 @@ package com.jundu.mylibrary.net;
 
 
 import com.google.gson.Gson;
-import com.jundu.mylibrary.helper.LenientGsonConverterFactory;
 import com.socks.library.KLog;
 
 import java.io.IOException;
@@ -26,7 +25,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 public class RetrofitClient {
 
     private static volatile RetrofitClient instance;
-    private Object apiService;
     private String baseUrl;
 
     private RetrofitClient() {
@@ -48,7 +46,7 @@ public class RetrofitClient {
         return this;
     }
 
-    public Object getApi(Class clazz) {
+    public <T>T getApi(Class<T> clazz) {
         //初始化一个client,不然retrofit会自己默认添加一个
         OkHttpClient client = new OkHttpClient().newBuilder()
                 //设置拦截器
@@ -65,7 +63,7 @@ public class RetrofitClient {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         //创建—— 网络请求接口—— 实例
-        apiService = retrofit.create(clazz);
+        T apiService = retrofit.create(clazz);
         return apiService;
     }
 

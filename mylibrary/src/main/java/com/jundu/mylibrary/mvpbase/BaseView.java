@@ -39,5 +39,11 @@ public interface BaseView {
      */
     Context getContext();
 
+    /**
+     * 绑定RXLifecycle生命周期
+     *
+     * @param <T>
+     * @return
+     */
     <T> LifecycleTransformer<T> bindToLifecycles();
 }

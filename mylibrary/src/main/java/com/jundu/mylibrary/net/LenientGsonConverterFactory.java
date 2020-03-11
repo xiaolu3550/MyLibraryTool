@@ -1,4 +1,4 @@
-package com.jundu.mylibrary.helper;
+package com.jundu.mylibrary.net;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
