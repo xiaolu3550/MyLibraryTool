@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.jundu.mylibrary.base.BaseActivity;
-import com.jundu.mylibrary.utils.ToolbarHelper;
+import com.xiaolu.mylibrary.base.BaseActivity;
+import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
@@ -13,7 +13,6 @@ import com.xiaolu.mylibrarytool.bean.LoginBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View> implements DemoContract.View {

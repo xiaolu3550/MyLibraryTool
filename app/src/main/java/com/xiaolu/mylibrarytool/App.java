@@ -2,7 +2,7 @@ package com.xiaolu.mylibrarytool;
 
 import android.app.Application;
 
-import com.jundu.mylibrary.MyLibrary;
+import com.xiaolu.mylibrary.MyLibrary;
 import com.xiaolu.mylibrarytool.api.RetrofitService;
 
 public class App extends Application {

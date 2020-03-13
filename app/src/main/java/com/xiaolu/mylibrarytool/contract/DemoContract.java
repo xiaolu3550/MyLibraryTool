@@ -1,6 +1,6 @@
 package com.xiaolu.mylibrarytool.contract;
 
-import com.jundu.mylibrary.mvpbase.BaseView;
+import com.xiaolu.mylibrary.mvpbase.BaseView;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;

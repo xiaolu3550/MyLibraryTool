@@ -1,7 +1,7 @@
 package com.xiaolu.mylibrarytool.presenter;
 
-import com.jundu.mylibrary.mvpbase.BasePresenter;
-import com.jundu.mylibrary.net.RxScheduler;
+import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.net.RxScheduler;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;

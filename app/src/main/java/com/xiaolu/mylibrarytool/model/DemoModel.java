@@ -1,6 +1,6 @@
 package com.xiaolu.mylibrarytool.model;
 
-import com.jundu.mylibrary.net.RequestBodyUtils;
+import com.xiaolu.mylibrary.net.RequestBodyUtils;
 import com.xiaolu.mylibrarytool.App;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
