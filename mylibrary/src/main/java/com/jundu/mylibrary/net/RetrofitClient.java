@@ -7,6 +7,7 @@ import com.socks.library.KLog;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -46,9 +47,13 @@ public class RetrofitClient {
         return this;
     }
 
-    public <T>T getApi(Class<T> clazz) {
+    public <T> T getApi(Class<T> clazz) {
         //初始化一个client,不然retrofit会自己默认添加一个
-        OkHttpClient client = new OkHttpClient().newBuilder()
+        OkHttpClient client = new OkHttpClient()
+                .newBuilder()
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 //设置拦截器
                 .addInterceptor(mLoggingInterceptor)
                 .build();
