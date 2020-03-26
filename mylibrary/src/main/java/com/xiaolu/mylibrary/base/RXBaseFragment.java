@@ -56,11 +56,12 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        KLog.d("onCreate", TAG + "-->onCreate()");
         mActivity = getActivity();//获取fragment所依赖的activity的对象
         Bundle bundle = getArguments();
         initParams(bundle);
         if (isRegisterEventBus()) {
-            KLog.d();
+            KLog.d("EventBusRegister", TAG + "-->register()");
             EventBusUtil.register(this);
         }
     }
@@ -71,6 +72,7 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         myRootView = inflater.inflate(setLayoutResourceId(), container, false);
+        KLog.d("onCreateView", TAG + "-->onCreateView()");
         Toolbar toolbar = myRootView.findViewById(R.id.toolbar);
         if (toolbar != null) {
             ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -132,6 +134,7 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        KLog.d("onActivityCreated", TAG + "-->onActivityCreated()");
 //        initDate();
         doBusiness(mActivity);
     }
@@ -398,9 +401,34 @@ abstract public class RXBaseFragment extends RxFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        KLog.d("onResume", TAG + "-->onResume()");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        KLog.d("onStop", TAG + "-->onStop()");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        KLog.d("onStart", TAG + "-->onStart()");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        KLog.d("onPause", TAG + "-->onPause()");
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         //页面销毁,恢复标记
+        KLog.d("onDestroyView", TAG + "-->onDestroyView()");
         bind.unbind();
         mIsPrepare = false;
         mIsVisible = false;
@@ -409,9 +437,10 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        KLog.d("onDestroy", TAG + "-->onDestroy()");
         if (isRegisterEventBus()) {
+            KLog.d("EventBusUnRegister", TAG + "-->unregister()");
             EventBusUtil.unregister(this);
         }
     }
-
 }

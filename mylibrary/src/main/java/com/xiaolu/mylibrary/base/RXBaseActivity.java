@@ -65,7 +65,7 @@ public abstract class RXBaseActivity extends RxAppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KLog.d("onCreate", "RXBaseActivity-->onCreate()");
+        KLog.d("onCreate", TAG + "-->onCreate()");
         mContext = this;
         setWindow(getWindow());
         RxActivityTool.addActivity(this);
@@ -252,38 +252,38 @@ public abstract class RXBaseActivity extends RxAppCompatActivity implements View
     @Override
     protected void onRestart() {
         super.onRestart();
-        KLog.d("onRestart", "RXBaseActivity-->onRestart()");
+        KLog.d("onRestart", TAG + "-->onRestart()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        KLog.d("onStart", "RXBaseActivity-->onStart()");
+        KLog.d("onStart", TAG + "-->onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         //  doBusiness(this);
-        KLog.d("onResume", "RXBaseActivity-->onResume()");
+        KLog.d("onResume", TAG + "-->onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        KLog.d("onPause", "RXBaseActivity-->onPause()");
+        KLog.d("onPause", TAG + "-->onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        KLog.d("onStop", "RXBaseActivity-->onStop()");
+        KLog.d("onStop", TAG + "-->onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        KLog.d("onDestroy", "RXBaseActivity-->onDestroy()");
+        KLog.d("onDestroy", TAG + "-->onDestroy()");
         if (isRegisterEventBus()) {
             KLog.d(TAG, "EventBusUtil-->unregister");
             EventBusUtil.unregister(this);
