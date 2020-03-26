@@ -8,6 +8,8 @@ import com.xiaolu.mylibrarytool.bean.LoginBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 import com.xiaolu.mylibrarytool.model.DemoModel;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -21,11 +23,11 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
     }
 
     @Override
-    public void getVerifyCode(String phoneNumber,String businessType) {
+    public void getVerifyCode(String phoneNumber, String businessType) {
         getView().onLoad();
-        demoModel.getVerifyCode(phoneNumber,businessType)
-                .compose(RxScheduler.<BaseObjectBean<GetVerifyCodeBean>>Flo_io_main())
-                .compose(getView().<BaseObjectBean<GetVerifyCodeBean>>bindToLifecycles())
+        demoModel.getVerifyCode(phoneNumber, businessType)
+                .compose(RxScheduler.<BaseObjectBean<GetVerifyCodeBean>>Flo_io_main(1, TimeUnit.SECONDS))
+                .compose(getView().<BaseObjectBean<GetVerifyCodeBean>>bindToLifecycleS())
                 .subscribe(new Observer<BaseObjectBean<GetVerifyCodeBean>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -60,8 +62,8 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
     public void login(String login, String password, String loginType, String verifyCode) {
         getView().onLoad();
         demoModel.login(login, password, loginType, verifyCode)
-                .compose(RxScheduler.<BaseObjectBean<LoginBean>>Flo_io_main())
-                .compose(getView().<BaseObjectBean<LoginBean>>bindToLifecycles())
+                .compose(RxScheduler.<BaseObjectBean<LoginBean>>Flo_io_main(1, TimeUnit.SECONDS))
+                .compose(getView().<BaseObjectBean<LoginBean>>bindToLifecycleS())
                 .subscribe(new Observer<BaseObjectBean<LoginBean>>() {
                     @Override
                     public void onSubscribe(Disposable d) {

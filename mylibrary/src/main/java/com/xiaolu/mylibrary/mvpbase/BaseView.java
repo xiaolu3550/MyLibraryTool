@@ -45,5 +45,5 @@ public interface BaseView {
      * @param <T>
      * @return
      */
-    <T> LifecycleTransformer<T> bindToLifecycles();
+    <T> LifecycleTransformer<T> bindToLifecycleS();
 }

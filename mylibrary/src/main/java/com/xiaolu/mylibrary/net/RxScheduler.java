@@ -2,6 +2,8 @@
 package com.xiaolu.mylibrary.net;
 
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -21,12 +23,13 @@ public class RxScheduler {
      * @return FlowableTransformer
      */
 
-    public static <T> ObservableTransformer<T, T> Flo_io_main() {
+    public static <T> ObservableTransformer<T, T> Flo_io_main(int timeOut, TimeUnit unit) {
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .debounce(timeOut, unit);
             }
 
         };
@@ -40,12 +43,13 @@ public class RxScheduler {
      * @return ObservableTransformer
      */
 
-    public static <T> ObservableTransformer<T, T> Obs_io_main() {
+    public static <T> ObservableTransformer<T, T> Obs_io_main(int timeOut, TimeUnit unit) {
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .debounce(timeOut, unit);
             }
         };
     }

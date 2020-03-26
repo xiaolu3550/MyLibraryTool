@@ -21,11 +21,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.socks.library.KLog;
+
 /**
  * @ClassName: BaseDialog
  * @Description: : (dialog 基类)
  */
 public abstract class BaseDialog extends DialogFragment {
+    protected final String TAG = this.getClass().getSimpleName();
 
     public enum DialogType {
         mid, bottom, top, full, right
@@ -38,6 +41,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        KLog.d("onCreate", TAG + "-->onCreate()");
         setStyle(DialogFragment.STYLE_NORMAL, getDialogStyle());
     }
 
@@ -45,6 +49,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        KLog.d("onCreateView", TAG + "-->onCreateView()");
         if (mRootView == null) {
             mRootView = inflater.inflate(getDialogLayout(), container);
             mViews = new SparseArray<>();
@@ -61,6 +66,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        KLog.d("onViewCreated", TAG + "-->onViewCreated()");
         bindView(savedInstanceState);
     }
 

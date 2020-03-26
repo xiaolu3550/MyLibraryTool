@@ -98,7 +98,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     }
 
     @Override
-    public <T> LifecycleTransformer<T> bindToLifecycles() {
+    public <T> LifecycleTransformer<T> bindToLifecycleS() {
         return bindToLifecycle();
     }
 
