@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
-import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;
@@ -28,7 +28,6 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void initParms(Bundle parms) {
-
     }
 
     @Override
@@ -70,10 +69,13 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     @Override
     public void loginSuccess(BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
         showBottomToast("登入成功");
+
     }
+
 
     @Override
     public void onError(String message) {
+        /*Button button = new Button(this);*/
         showBottomToast(message);
     }
 
@@ -106,7 +108,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_getVerifyCode:
-                presenter.getVerifyCode("15636808536","2");
+                presenter.getVerifyCode("15636808536", "2");
                 break;
             case R.id.btn_login:
                 presenter.login("15636808536", "s123456", "2", "");

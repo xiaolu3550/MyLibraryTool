@@ -9,7 +9,7 @@ public class LoginBean {
      * updateBy : null
      * updateTime : null
      * remark : null
-     * params : null
+     * params : nullƒ
      * ids : null
      * del : null
      * userId : 6887f05bbfa34b0cad4dc2c1b69d648f
