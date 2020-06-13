@@ -28,6 +28,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void initParms(Bundle parms) {
+
     }
 
     @Override
