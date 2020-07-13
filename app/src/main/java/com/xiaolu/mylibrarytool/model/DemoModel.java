@@ -5,6 +5,7 @@ import com.xiaolu.mylibrarytool.App;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;
+import com.xiaolu.mylibrarytool.bean.RegisterBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 
 import java.util.Map;
@@ -32,5 +33,15 @@ public class DemoModel implements DemoContract.Model {
         map.put("loginType", loginType);
         map.put("verifyCode", verifyCode);
         return App.getClient().login(RequestBodyUtils.setRequestBody_JSON(map));
+    }
+
+    @Override
+    public Observable<BaseObjectBean<RegisterBean>> register(String phoneNumber, String verifyCode, String password, String confirmPassword, String loginType) {
+        map = new TreeMap<>();
+        map.put("phoneNumber", phoneNumber);
+        map.put("verifyCode", verifyCode);
+        map.put("password", password);
+        map.put("confirmPassword", confirmPassword);
+        return App.getClient().register(RequestBodyUtils.setRequestBody_JSON(map));
     }
 }

@@ -51,4 +51,15 @@ public class BaseObjectBean<T> {
     public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
+
+    @Override
+    public String toString() {
+        return "BaseObjectBean{" +
+                "code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                ", sign='" + sign + '\'' +
+                ", merchantId='" + merchantId + '\'' +
+                '}';
+    }
 }

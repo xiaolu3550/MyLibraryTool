@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35"
+        android:background="@color/white"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        tl:tl_indicator_color="#2f77eb"
+        tl:tl_tab_space_equal="true"
+        tl:tl_textsize="@dimen/sp_12"
+        tl:tl_indicator_height="@dimen/dp_2"
+        tl:tl_indicator_width_equal_title="true"
+        tl:tl_textSelectColor="#2f77eb"
+        tl:tl_indicator_gravity="BOTTOM"
+        tl:tl_textUnselectColor="@color/black"
+        tl:tl_indicator_style="NORMAL" />
+    <com.xiaolu.mylibrarytool.ui.NoScrollViewPager
+        android:id="@+id/vp"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+</LinearLayout>

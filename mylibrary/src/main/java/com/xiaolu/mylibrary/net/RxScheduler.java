@@ -35,6 +35,18 @@ public class RxScheduler {
         };
     }
 
+    public static <T> ObservableTransformer<T, T> Flo_io_io(int timeOut, TimeUnit unit) {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io())
+                        .observeOn(Schedulers.io())
+                        .debounce(timeOut, unit);
+            }
+
+        };
+    }
+
 
     /**
      * 统一线程处理

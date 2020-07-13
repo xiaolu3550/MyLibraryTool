@@ -5,17 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <Button
         android:id="@+id/btn_getVerifyCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="获取验证码" />
-
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_re"
+        android:text="注册/登入"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btn_login"
         android:text="登入"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_open"
+        android:text="open"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_open_dialog"
+        android:text="open_Dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

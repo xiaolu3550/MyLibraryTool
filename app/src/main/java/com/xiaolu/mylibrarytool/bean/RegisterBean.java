@@ -1,17 +1,16 @@
 package com.xiaolu.mylibrarytool.bean;
 
-public class LoginBean {
-
+public class RegisterBean {
     /**
      * searchValue : null
      * createBy : null
-     * createTime : 2020-02-26 14:08:58
+     * createTime : 2020-02-26 14:08:57
      * updateBy : null
      * updateTime : null
      * remark : null
      * params : null
      * ids : null
-     * del : null
+     * del : 0
      * userId : 6887f05bbfa34b0cad4dc2c1b69d648f
      * userName : 默认用户
      * loginName : 15636808536
@@ -22,43 +21,42 @@ public class LoginBean {
      * status : 0
      * delFlag : 0
      * balance : 0
-     * token : ba2e83de9db1446991f6d429c0f0977d
+     * token : null
      */
-
-    private Object searchValue;
-    private Object createBy;
+    private String searchValue;
+    private String createBy;
     private String createTime;
-    private Object updateBy;
-    private Object updateTime;
-    private Object remark;
-    private Object params;
-    private Object ids;
-    private Object del;
+    private String updateBy;
+    private String updateTime;
+    private String remark;
+    private String params;
+    private String ids;
+    private int del;
     private String userId;
     private String userName;
     private String loginName;
     private String password;
     private String phoneNumber;
-    private Object avatar;
-    private Object email;
+    private String avatar;
+    private String email;
     private int status;
     private int delFlag;
     private int balance;
     private String token;
 
-    public Object getSearchValue() {
+    public String getSearchValue() {
         return searchValue;
     }
 
-    public void setSearchValue(Object searchValue) {
+    public void setSearchValue(String searchValue) {
         this.searchValue = searchValue;
     }
 
-    public Object getCreateBy() {
+    public String getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(Object createBy) {
+    public void setCreateBy(String createBy) {
         this.createBy = createBy;
     }
 
@@ -70,51 +68,51 @@ public class LoginBean {
         this.createTime = createTime;
     }
 
-    public Object getUpdateBy() {
+    public String getUpdateBy() {
         return updateBy;
     }
 
-    public void setUpdateBy(Object updateBy) {
+    public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
     }
 
-    public Object getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Object updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 
-    public Object getRemark() {
+    public String getRemark() {
         return remark;
     }
 
-    public void setRemark(Object remark) {
+    public void setRemark(String remark) {
         this.remark = remark;
     }
 
-    public Object getParams() {
+    public String getParams() {
         return params;
     }
 
-    public void setParams(Object params) {
+    public void setParams(String params) {
         this.params = params;
     }
 
-    public Object getIds() {
+    public String getIds() {
         return ids;
     }
 
-    public void setIds(Object ids) {
+    public void setIds(String ids) {
         this.ids = ids;
     }
 
-    public Object getDel() {
+    public int getDel() {
         return del;
     }
 
-    public void setDel(Object del) {
+    public void setDel(int del) {
         this.del = del;
     }
 
@@ -158,19 +156,19 @@ public class LoginBean {
         this.phoneNumber = phoneNumber;
     }
 
-    public Object getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Object avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -206,29 +204,4 @@ public class LoginBean {
         this.token = token;
     }
 
-    @Override
-    public String toString() {
-        return "LoginBean{" +
-                "searchValue=" + searchValue +
-                ", createBy=" + createBy +
-                ", createTime='" + createTime + '\'' +
-                ", updateBy=" + updateBy +
-                ", updateTime=" + updateTime +
-                ", remark=" + remark +
-                ", params=" + params +
-                ", ids=" + ids +
-                ", del=" + del +
-                ", userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
-                ", loginName='" + loginName + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", avatar=" + avatar +
-                ", email=" + email +
-                ", status=" + status +
-                ", delFlag=" + delFlag +
-                ", balance=" + balance +
-                ", token='" + token + '\'' +
-                '}';
-    }
 }

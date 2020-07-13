@@ -79,4 +79,6 @@ dependencies {
     api 'com.just.agentweb:agentweb:4.1.2' // (必选)
     api 'com.just.agentweb:filechooser:4.1.2'// (可选)
     api 'com.download.library:Downloader:4.1.2'// (可选)
+
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }

@@ -3,6 +3,7 @@ package com.xiaolu.mylibrarytool.api;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;
+import com.xiaolu.mylibrarytool.bean.RegisterBean;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -27,4 +28,13 @@ public interface RetrofitService {
      */
     @POST("mobileUserManager/loginCheck")
     Observable<BaseObjectBean<LoginBean>> login(@Body RequestBody requestBody);
+
+    /**
+     * 根据手机号或账户名称、密码登录
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST("mobileUserManager/register")
+    Observable<BaseObjectBean<RegisterBean>> register(@Body RequestBody requestBody);
 }
