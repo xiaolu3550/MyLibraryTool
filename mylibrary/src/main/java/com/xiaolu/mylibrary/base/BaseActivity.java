@@ -7,14 +7,32 @@ import com.xiaolu.mylibrary.mvpbase.BaseView;
 
 
 /**
- * @author: zhaol
- * @createdOn: 2018/5/17 15:28
- * @description: $desc$
+ * ================================================
+ *
+ * @ProjectName: mylibrary
+ * @Package: com.xiaolu.mylibrary.base
+ * @ClassName: BaseActivity
+ * @Description: Activity父类
+ * @Author: 赵璐
+ * @CreateDate: 2020/7/13 13:49
+ * @UpdateUser: 更新者: 赵璐
+ * @UpdateDate: 2020/7/13 13:49
+ * @UpdateRemark: 更新内容:
+ * @Version: 1.0
+ * ================================================
  */
-public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseView> extends RXBaseActivity {
+public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseView> extends BaseRxActivity {
     protected P presenter;
 
-    //实例化Presenter
+    /**
+     * 初始Presenter
+     *
+     * @return P
+     * @method initPresenter
+     * @description: 初始Presenter
+     * @date: 2020/7/13 13:51
+     * @author: 赵璐
+     */
     public abstract P initPresenter();
 
     @Override

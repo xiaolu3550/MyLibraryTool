@@ -32,8 +32,22 @@ import java.util.Stack;
 
 import butterknife.ButterKnife;
 
-
-public abstract class RXBaseActivity extends RxAppCompatActivity implements View.OnClickListener {
+/**
+ * ================================================
+ *
+ * @ProjectName:
+ * @Package: com.xiaolu.mylibrary.base
+ * @ClassName: BaseRxActivity
+ * @Description: Activity父类
+ * @Author: 赵璐
+ * @CreateDate: 2020/7/13 13:52
+ * @UpdateUser: 更新者: 赵璐
+ * @UpdateDate: 2020/7/13 13:52
+ * @UpdateRemark: 更新内容:
+ * @Version: 1.0
+ * ================================================
+ */
+public abstract class BaseRxActivity extends RxAppCompatActivity implements View.OnClickListener {
     /**
      * 是否沉浸状态栏
      **/
@@ -117,6 +131,16 @@ public abstract class RXBaseActivity extends RxAppCompatActivity implements View
 
     }
 
+    /**
+     * 设置toolbar
+     *
+     * @param toolbarHelper
+     * @return void
+     * @method initToolbar
+     * @description: 设置toolbar
+     * @date: 2020/7/13 13:54
+     * @author: xiaol
+     */
     protected abstract void initToolbar(ToolbarHelper toolbarHelper);
 
     /**
@@ -143,9 +167,14 @@ public abstract class RXBaseActivity extends RxAppCompatActivity implements View
     }
 
     /**
-     * 接收到分发到事件
+     * 接受分发事件
      *
-     * @param event 事件
+     * @param event 分发事件
+     * @return void
+     * @method receiveEvent
+     * @description: 描述一下方法的作用
+     * @date: 2020/7/13 13:55
+     * @author: 赵璐
      */
     protected void receiveEvent(MessageEvent event) {
 
@@ -155,6 +184,11 @@ public abstract class RXBaseActivity extends RxAppCompatActivity implements View
      * 接受到分发的粘性事件
      *
      * @param event 粘性事件
+     * @return void
+     * @method receiveEvent
+     * @description: 描述一下方法的作用
+     * @date: 2020/7/13 13:55
+     * @author: 赵璐
      */
     protected void receiveStickyEvent(MessageEvent event) {
 

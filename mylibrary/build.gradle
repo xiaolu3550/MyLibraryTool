@@ -1,3 +1,4 @@
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 
@@ -31,10 +32,10 @@ dependencies {
     api 'junit:junit:4.12'
     api 'androidx.test:runner:1.2.0'
     api 'androidx.test.espresso:espresso-core:3.2.0'
-    api 'androidx.appcompat:appcompat:1.1.0-beta01'
-    api 'com.google.android.material:material:1.1.0-alpha07'
+    api 'androidx.appcompat:appcompat:1.3.0-alpha01'
+    api 'com.google.android.material:material:1.3.0-alpha01'
     api 'androidx.constraintlayout:constraintlayout:1.1.3'
-    api 'androidx.recyclerview:recyclerview:1.1.0-alpha06'
+    api 'androidx.recyclerview:recyclerview:1.2.0-alpha04'
     api 'com.google.code.gson:gson:2.8.5'
     //retrofit
     api 'com.squareup.retrofit2:retrofit:2.7.2'
@@ -82,3 +83,13 @@ dependencies {
 
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }
+
+publish {
+    userOrg = 'xiaolu'                 //bintray.com用户名
+    groupId = 'com.xiaolu'             //jcenter上的路径,bintray上创建Package时填写的Version control项
+    artifactId = 'Mytool'        //项目名称，bintray上创建Package时填写的Name项
+    publishVersion = '1.0.1'          //版本号
+    desc = '自用工具'
+    website = 'https://github.com/xiaolu3550/MyLibraryTool'
+}
+
