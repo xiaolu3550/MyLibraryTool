@@ -35,5 +35,7 @@
         android:id="@+id/btn_open_dialog"
         android:text="open_Dialog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
+
 </LinearLayout>
