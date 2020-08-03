@@ -3,7 +3,12 @@ package com.xiaolu.mylibrarytool.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.socks.library.KLog;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -49,7 +54,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     protected void initToolbar(ToolbarHelper toolbarHelper) {
-
+        toolbarHelper.setTitle("标题", R.color.black, 14);
     }
 
     @Override
@@ -172,4 +177,10 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }
