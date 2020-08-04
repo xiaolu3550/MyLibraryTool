@@ -1,7 +1,7 @@
 # MyLibraryTool
 自用Library
 #### jcenter
-`implementation 'com.xiaolu:Mytool:1.0.0'`
+`implementation 'com.xiaolu:Mytool:1.0.2'`
 
 #### 在项目中build文件中添加支持butterknife
 
