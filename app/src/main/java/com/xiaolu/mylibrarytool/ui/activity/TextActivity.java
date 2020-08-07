@@ -41,10 +41,7 @@ public class TextActivity extends BaseActivity {
 
     @Override
     protected void initToolbar(ToolbarHelper toolbarHelper) {
-        toolbarHelper.setTitle("订单记录", Color.parseColor("#333333"), 14);
-        toolbarHelper.setPic(R.mipmap.ic_launcher);
-        toolbarHelper.setOnClick(view -> finishActivity(TextActivity.class));
-        toolbarHelper.setBackground(Color.parseColor("#FFFFFF"));
+
     }
 
     private void initFrmaget() {
@@ -71,6 +68,11 @@ public class TextActivity extends BaseActivity {
     @Override
     public int bindLayout() {
         return R.layout.activity_text;
+    }
+
+    @Override
+    public int setToolbarLayout() {
+        return 0;
     }
 
     @Override

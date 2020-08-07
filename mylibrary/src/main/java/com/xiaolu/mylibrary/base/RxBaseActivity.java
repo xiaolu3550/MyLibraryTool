@@ -1,5 +1,6 @@
 package com.xiaolu.mylibrary.base;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -14,16 +15,15 @@ import android.view.Window;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.toast.ToastUtils;
-import com.jaeger.library.StatusBarUtil;
+import com.socks.library.KLog;
+import com.tamsiree.rxtool.RxActivityTool;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
 import com.xiaolu.mylibrary.utils.EventBusUtil;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
-import com.socks.library.KLog;
-import com.tamsiree.rxtool.RxActivityTool;
-import com.tamsiree.rxtool.RxBarTool;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -47,16 +47,7 @@ import butterknife.ButterKnife;
  * @Version: 1.0
  * ================================================
  */
-public abstract class BaseRxActivity extends RxAppCompatActivity implements View.OnClickListener {
-    /**
-     * 是否沉浸状态栏
-     **/
-    private boolean isSetStatusBar = false;
-    private boolean isStatusBar = true;
-    /**
-     * 是否允许全屏
-     **/
-    private boolean mAllowFullScreen = false;
+public abstract class RxBaseActivity extends RxAppCompatActivity implements View.OnClickListener {
     /**
      * 是否禁止旋转屏幕
      **/
@@ -76,6 +67,7 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
 
     public Context mContext;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,25 +77,20 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
         RxActivityTool.addActivity(this);
         Bundle bundle = getIntent().getExtras();
         View mView = bindView();
-        if (mAllowFullScreen) {
-            RxBarTool.noTitle(this);
-        }
         initParms(bundle);
         if (null == mView) {
             mContextView = LayoutInflater.from(this).inflate(bindLayout(), null);
         } else {
             mContextView = mView;
         }
-        Toolbar toolbar = mContextView.findViewById(R.id.toolbar);
+        Toolbar toolbar = mContextView.findViewById(setToolbarLayout() == 0 ? R.layout.toolbar : setToolbarLayout());
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             // 默认不显示原生标题
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             initToolbar(new ToolbarHelper(toolbar));
         }
-        if (isSetStatusBar) {
-            steepStatusBar();
-        }
+
         setContentView(mContextView);
         ButterKnife.bind(this);
         if (!isAllowScreenRoate) {
@@ -112,7 +99,6 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
         if (isPortarait) {
             isPortarait();
         }
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.white));
         initView(mContextView);
         doBusiness(this);
         setListener();
@@ -141,7 +127,13 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
      * @date: 2020/7/13 13:54
      * @author: xiaol
      */
-    protected abstract void initToolbar(ToolbarHelper toolbarHelper);
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        ImmersionBar.with(this)
+                .statusBarDarkFont(true)
+                .titleBar(toolbarHelper.getToolbar())
+                .init();
+    }
+
 
     /**
      * 是否注册事件分发
@@ -229,6 +221,13 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
      * @return
      */
     public abstract int bindLayout();
+
+    /**
+     * [绑定布局]
+     *
+     * @return
+     */
+    public abstract int setToolbarLayout();
 
     /**
      * [初始化控件]
@@ -322,39 +321,6 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
             KLog.d(TAG, "EventBusUtil-->unregister");
             EventBusUtil.unregister(this);
         }
-    }
-
-    public boolean isStatusBar() {
-        return isStatusBar;
-    }
-
-    public void setStatusBar(boolean statusBar) {
-        isStatusBar = statusBar;
-    }
-
-    /**
-     * [沉浸状态栏]
-     */
-    private void steepStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            RxBarTool.setTransparentStatusBar(this);
-           /* // 透明状态栏
-            getWindow().addFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // 透明导航栏
-            getWindow().addFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);*/
-        }
-    }
-
-    /**
-     * [是否设置沉浸状态栏]
-     * 默认为否
-     *
-     * @param isSetStatusBar
-     */
-    public void setSteepStatusBar(boolean isSetStatusBar) {
-        this.isSetStatusBar = isSetStatusBar;
     }
 
     /**
@@ -538,16 +504,6 @@ public abstract class BaseRxActivity extends RxAppCompatActivity implements View
         RxActivityTool.AppExit(mContext);
     }
 
-
-    /**
-     * [是否允许全屏]
-     * 默认为是
-     *
-     * @param allowFullScreen
-     */
-    public void setAllowFullScreen(boolean allowFullScreen) {
-        this.mAllowFullScreen = allowFullScreen;
-    }
 
     /**
      * [是否允许屏幕旋转]

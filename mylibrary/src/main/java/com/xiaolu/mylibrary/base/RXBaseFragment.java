@@ -1,17 +1,23 @@
 package com.xiaolu.mylibrary.base;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.gyf.immersionbar.ImmersionBar;
+import com.gyf.immersionbar.components.SimpleImmersionOwner;
+import com.gyf.immersionbar.components.SimpleImmersionProxy;
 import com.hjq.toast.ToastUtils;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.xiaolu.mylibrary.R;
@@ -28,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-abstract public class RXBaseFragment extends RxFragment {
+abstract public class RXBaseFragment extends RxFragment implements SimpleImmersionOwner {
     /**
      * 根View
      */
@@ -51,6 +57,12 @@ abstract public class RXBaseFragment extends RxFragment {
      **/
     protected final String TAG = this.getClass().getSimpleName();
     private Unbinder bind;
+    /**
+     * ImmersionBar代理类
+     */
+    private SimpleImmersionProxy mSimpleImmersionProxy = new SimpleImmersionProxy(this);
+    private Toolbar toolbar;
+    private View statusBarView;
 
     //fragment创建
     @Override
@@ -67,27 +79,38 @@ abstract public class RXBaseFragment extends RxFragment {
     }
 
 
-    //初始化fragment布局
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         myRootView = inflater.inflate(setLayoutResourceId(), container, false);
         KLog.d("onCreateView", TAG + "-->onCreateView()");
-        Toolbar toolbar = myRootView.findViewById(R.id.toolbar);
+        return myRootView;
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        KLog.d("onViewCreated", TAG + "-->onViewCreated()");
+        toolbar = view.findViewById(setToolbarLayout() == 0 ? R.id.toolbar : setToolbarLayout());
+        statusBarView = view.findViewById(R.id.status_bar_view);
         if (toolbar != null) {
             ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
             // 默认不显示原生标题
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
             initToolbar(new ToolbarHelper(toolbar));
         }
-        bind = ButterKnife.bind(this, myRootView);
+        bind = ButterKnife.bind(this, view);
+        fitsLayoutOverlap();
         initView();
         mIsPrepare = true;
         setListener();
-        return myRootView;
     }
 
-    protected abstract void initToolbar(ToolbarHelper toolbarHelper);
+    protected abstract int setToolbarLayout();
+
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+    }
 
     /**
      * 是否注册事件分发
@@ -134,6 +157,7 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mSimpleImmersionProxy.onActivityCreated(savedInstanceState);
         KLog.d("onActivityCreated", TAG + "-->onActivityCreated()");
 //        initDate();
         doBusiness(mActivity);
@@ -176,11 +200,38 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-
+        mSimpleImmersionProxy.setUserVisibleHint(isVisibleToUser);
         this.mIsVisible = isVisibleToUser;
 
         if (isVisibleToUser) {
             onVisibleToUser();
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        mSimpleImmersionProxy.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mSimpleImmersionProxy.onConfigurationChanged(newConfig);
+        fitsLayoutOverlap();
+    }
+
+
+    @Override
+    public boolean immersionBarEnabled() {
+        return true;
+    }
+
+    private void fitsLayoutOverlap() {
+        if (statusBarView != null) {
+            ImmersionBar.setStatusBarView(this, statusBarView);
+        } else {
+            ImmersionBar.setTitleBar(this, toolbar);
         }
     }
 
@@ -437,6 +488,7 @@ abstract public class RXBaseFragment extends RxFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mSimpleImmersionProxy.onDestroy();
         KLog.d("onDestroy", TAG + "-->onDestroy()");
         if (isRegisterEventBus()) {
             KLog.d("EventBusUnRegister", TAG + "-->unregister()");

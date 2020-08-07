@@ -6,10 +6,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
 
 import com.xiaolu.mylibrary.R;
-
-import androidx.appcompat.widget.Toolbar;
 
 
 /**
@@ -22,6 +21,7 @@ public class ToolbarHelper {
 
     public ToolbarHelper(Toolbar toolbar) {
         this.mToolbar = toolbar;
+
     }
 
     public Toolbar getToolbar() {

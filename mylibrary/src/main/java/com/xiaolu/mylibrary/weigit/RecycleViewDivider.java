@@ -143,6 +143,8 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
                 //垂直布局底部留边，最后一行不留
                 outRect.set(0, 0, 0, (itemPosition != childCount) ? mDividerHeight : 0);
                 break;
+            default:
+                break;
         }
     }
 

@@ -21,7 +21,7 @@ import com.xiaolu.mylibrary.mvpbase.BaseView;
  * @Version: 1.0
  * ================================================
  */
-public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseView> extends BaseRxActivity {
+public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseView> extends RxBaseActivity {
     protected P presenter;
 
     /**

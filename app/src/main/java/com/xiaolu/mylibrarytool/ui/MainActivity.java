@@ -3,13 +3,12 @@ package com.xiaolu.mylibrarytool.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
-
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.gyf.immersionbar.ImmersionBar;
 import com.socks.library.KLog;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseActivity;
@@ -24,7 +23,6 @@ import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
 import com.xiaolu.mylibrarytool.ui.activity.TextActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -45,6 +43,8 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View> implements DemoContract.View {
     @BindView(R.id.et_code)
     EditText etCode;
+    @BindView(R.id.mIv)
+    ImageView mIv;
     private CustomDialog build;
 
     @Override
@@ -54,7 +54,23 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     protected void initToolbar(ToolbarHelper toolbarHelper) {
-        toolbarHelper.setTitle("标题", R.color.black, 14);
+        //  toolbarHelper.setTitle("标题", R.color.black, 14);
+        //   toolbarHelper.setBackground(R.color.red);
+        toolbarHelper.getToolbar().setNavigationIcon(R.mipmap.back_left);
+        ImmersionBar.with(this)
+                .statusBarView(R.id.top_view)
+                .navigationBarColor(R.color.red)
+                .statusBarDarkFont(false)
+                .fullScreen(true)
+                .titleBar(toolbarHelper.getToolbar())
+                .init();
+        //  super.initToolbar(toolbarHelper);
+      /*  ImmersionBar.with(this)
+                //.navigationBarColor(R.color.red)
+                .titleBar(toolbarHelper.getToolbar())
+                //  .statusBarDarkFont(true)
+                //  .reset()
+                .init();*/
     }
 
     @Override
@@ -73,8 +89,15 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     }
 
     @Override
-    public void initView(View view) {
+    public int setToolbarLayout() {
+        return R.id.toolbar;
+    }
 
+    @Override
+    public void initView(View view) {
+        Glide.with(this).asBitmap().load(R.mipmap.test)
+                .apply(new RequestOptions().placeholder(R.mipmap.test))
+                .into(mIv);
     }
 
     @Override
@@ -177,10 +200,4 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

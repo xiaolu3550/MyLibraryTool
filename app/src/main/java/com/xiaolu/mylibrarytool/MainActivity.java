@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
+
+import com.gyf.immersionbar.ImmersionBar;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -16,6 +19,9 @@ import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View> implements DemoContract.View {
+
+    private Toolbar toolbar;
+
     @Override
     public DemoPresenter initPresenter() {
         return new DemoPresenter();
@@ -23,6 +29,8 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     protected void initToolbar(ToolbarHelper toolbarHelper) {
+        super.initToolbar(toolbarHelper);
+        toolbar = toolbarHelper.getToolbar();
 
     }
 
@@ -39,6 +47,11 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     @Override
     public int bindLayout() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public int setToolbarLayout() {
+        return 0;
     }
 
     @Override
@@ -106,7 +119,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_getVerifyCode:
-                presenter.getVerifyCode("15636808536","2");
+                presenter.getVerifyCode("15636808536", "2");
                 break;
             case R.id.btn_login:
                 presenter.login("15636808536", "s123456", "2", "");
