@@ -2,10 +2,10 @@ package com.xiaolu.mylibrary.base;
 
 import android.os.Bundle;
 
+import com.xiaolu.mylibrary.mvpbase.BaseContract;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
-import com.xiaolu.mylibrary.mvpbase.BaseView;
-
-public abstract class LazyFragment<P extends BasePresenter<V>, V extends BaseView> extends BaseLazyFragment {
+@Deprecated
+public abstract class LazyFragment<P extends BasePresenter<V>, V extends BaseContract.BaseView> extends BaseLazyFragment {
     protected P presenter;
 
     //实例化Presenter

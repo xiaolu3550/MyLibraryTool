@@ -5,12 +5,22 @@
     android:layout_gravity="center"
     android:orientation="vertical">
     <include layout="@layout/toolbar"/>
-    <TextView
+    <LinearLayout
+        android:id="@+id/ll_load"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aa"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sp_20" />
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aa"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20" />
+
+    </LinearLayout>
+
 </LinearLayout>

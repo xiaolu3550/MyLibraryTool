@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 6
+        versionName "1.0.6"
     }
 
     buildTypes {
@@ -90,7 +90,7 @@ publish {
     userOrg = 'xiaolu'                 //bintray.com用户名
     groupId = 'com.xiaolu'             //jcenter上的路径,bintray上创建Package时填写的Version control项
     artifactId = 'Mytool'        //项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.0.3'          //版本号
+    publishVersion = '1.0.6'          //版本号
     desc = '自用工具'
     website = 'https://github.com/xiaolu3550/MyLibraryTool'
 }

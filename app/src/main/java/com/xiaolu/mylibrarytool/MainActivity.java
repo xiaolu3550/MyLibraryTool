@@ -28,8 +28,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     }
 
     @Override
-    protected void initToolbar(ToolbarHelper toolbarHelper) {
-        super.initToolbar(toolbarHelper);
+    protected void initToolbar(ToolbarHelper toolbarHelper,ImmersionBar immersionBar) {
         toolbar = toolbarHelper.getToolbar();
 
     }

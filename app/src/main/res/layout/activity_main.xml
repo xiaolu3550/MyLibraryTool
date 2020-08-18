@@ -1,80 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.MainActivity">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
-        <ImageView
-            android:id="@+id/mIv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:scaleType="centerCrop" />
 
-        <LinearLayout
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:id="@+id/ll_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_getVerifyCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="获取验证码" />
 
-            <View
-                android:id="@+id/top_view"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" />
+        <Button
+            android:id="@+id/btn_re"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注册/登入" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                app:titleTextColor="@android:color/black">
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登入" />
 
-                <TextView
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/sp_20"
-                    android:text="标题"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </androidx.appcompat.widget.Toolbar>
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="open" />
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/btn_open_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="open_Dialog" />
 
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_getVerifyCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="获取验证码" />
-    <EditText
-        android:id="@+id/et_code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_re"
-        android:text="注册/登入"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_login"
-        android:text="登入"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_open"
-        android:text="open"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_open_dialog"
-        android:text="open_Dialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
 
 </LinearLayout>

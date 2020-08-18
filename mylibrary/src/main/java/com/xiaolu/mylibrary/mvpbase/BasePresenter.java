@@ -1,12 +1,18 @@
 package com.xiaolu.mylibrary.mvpbase;
 
+import com.xiaolu.mylibrary.load.callback.BaseCallBack;
+import com.xiaolu.mylibrary.load.core.Load;
+import com.xiaolu.mylibrary.load.core.LoadService;
+
 /**
  * @author: zhaol
  * @createdOn: 2018/5/16 9:26
  * @description: MVP中presenter的父类
  */
-public class BasePresenter<V extends BaseView> {
+public class BasePresenter<V extends BaseContract.BaseView> {
     protected V baseView;
+    protected LoadService register;
+
     /**
      * 绑定的view
      */
@@ -37,5 +43,13 @@ public class BasePresenter<V extends BaseView> {
      */
     public V getView() {
         return baseView;
+    }
+
+    public void setLoadService(Object object, BaseCallBack.OnReloadListener onReloadListener) {
+        register = Load.getDefault().register(object, onReloadListener);
+    }
+
+    public LoadService getLoadService() {
+        return register;
     }
 }

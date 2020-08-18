@@ -2,8 +2,8 @@ package com.xiaolu.mylibrary.base;
 
 import android.os.Bundle;
 
+import com.xiaolu.mylibrary.mvpbase.BaseContract;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
-import com.xiaolu.mylibrary.mvpbase.BaseView;
 
 
 /**
@@ -11,7 +11,7 @@ import com.xiaolu.mylibrary.mvpbase.BaseView;
  * @createdOn: 2018/5/17 16:19
  * @description: $desc$
  */
-public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseView> extends RXBaseFragment {
+public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseContract.BaseView> extends RXBaseFragment {
     protected P presenter;
 
     //实例化Presenter
@@ -36,6 +36,14 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseVie
             presenter.detachView();
         }
         super.onDestroy();
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (presenter != null) {
+            presenter.detachView();
+        }
+        super.onDestroyView();
     }
 
     @Override

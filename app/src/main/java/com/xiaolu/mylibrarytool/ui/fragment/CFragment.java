@@ -13,6 +13,7 @@ import com.xiaolu.mylibrary.base.BaseFragment;
 import com.xiaolu.mylibrary.base.LazyFragment;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
+import com.xiaolu.mylibrarytool.App;
 import com.xiaolu.mylibrarytool.R;
 
 import butterknife.BindView;
@@ -36,7 +37,7 @@ public class CFragment extends BaseFragment {
     @Override
     protected void initToolbar(ToolbarHelper toolbarHelper) {
         toolbar = toolbarHelper.getToolbar();
-        toolbar.setBackgroundColor(R.color.orange);
+        toolbar.setBackgroundColor(App.getInstance().getResources().getColor(R.color.orange));
     }
 
     @Override

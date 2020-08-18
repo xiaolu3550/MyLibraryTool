@@ -2,8 +2,8 @@ package com.xiaolu.mylibrary.base;
 
 import android.os.Bundle;
 
+import com.xiaolu.mylibrary.mvpbase.BaseContract;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
-import com.xiaolu.mylibrary.mvpbase.BaseView;
 
 
 /**
@@ -21,7 +21,7 @@ import com.xiaolu.mylibrary.mvpbase.BaseView;
  * @Version: 1.0
  * ================================================
  */
-public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseView> extends RxBaseActivity {
+public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseContract.BaseView> extends RxBaseActivity {
     protected P presenter;
 
     /**

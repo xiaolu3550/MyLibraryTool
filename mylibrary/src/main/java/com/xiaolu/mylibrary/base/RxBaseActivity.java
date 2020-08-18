@@ -83,12 +83,16 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
         } else {
             mContextView = mView;
         }
-        Toolbar toolbar = mContextView.findViewById(setToolbarLayout() == 0 ? R.layout.toolbar : setToolbarLayout());
+        Toolbar toolbar = mContextView.findViewById(setToolbarLayout() == 0 ? R.id.toolbar : setToolbarLayout());
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             // 默认不显示原生标题
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-            initToolbar(new ToolbarHelper(toolbar));
+            ImmersionBar immersionBar = ImmersionBar.with(this);
+            immersionBar.statusBarDarkFont(true)
+                    .titleBar(toolbar)
+                    .init();
+            initToolbar(new ToolbarHelper(toolbar),immersionBar);
         }
 
         setContentView(mContextView);
@@ -127,12 +131,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
      * @date: 2020/7/13 13:54
      * @author: xiaol
      */
-    protected void initToolbar(ToolbarHelper toolbarHelper) {
-        ImmersionBar.with(this)
-                .statusBarDarkFont(true)
-                .titleBar(toolbarHelper.getToolbar())
-                .init();
-    }
+    protected abstract void initToolbar(ToolbarHelper toolbarHelper, ImmersionBar immersionBar);
 
 
     /**

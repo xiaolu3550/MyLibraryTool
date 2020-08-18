@@ -1,6 +1,6 @@
 package com.xiaolu.mylibrarytool.contract;
 
-import com.xiaolu.mylibrary.mvpbase.BaseView;
+import com.xiaolu.mylibrary.mvpbase.BaseContract;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
 import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;
@@ -8,13 +8,13 @@ import com.xiaolu.mylibrarytool.bean.RegisterBean;
 
 import io.reactivex.Observable;
 
-public interface DemoContract {
-    interface Model {
+public interface DemoContract extends BaseContract {
+    interface Model extends BaseModel {
         Observable<BaseObjectBean<GetVerifyCodeBean>> getVerifyCode(String phoneNumber, String businessType);
 
         Observable<BaseObjectBean<LoginBean>> login(String loginName, String password, String loginType, String verifyCode);
 
-        Observable<BaseObjectBean<RegisterBean>> register(String phoneNumber, String verifyCode, String password, String confirmPassword,String loginType);
+        Observable<BaseObjectBean<RegisterBean>> register(String phoneNumber, String verifyCode, String password, String confirmPassword, String loginType);
     }
 
     interface View extends BaseView {
@@ -23,11 +23,11 @@ public interface DemoContract {
         void loginSuccess(BaseObjectBean<LoginBean> loginBeanBaseObjectBean);
     }
 
-    interface Presenter {
+    interface Presenter extends BasePresenter {
         void getVerifyCode(String phoneNumber, String businessType);
 
         void login(String login, String password, String loginType, String verifyCode);
 
-        void register(String phoneNumber, String verifyCode, String password, String confirmPassword,String loginType);
+        void register(String phoneNumber, String verifyCode, String password, String confirmPassword, String loginType);
     }
 }

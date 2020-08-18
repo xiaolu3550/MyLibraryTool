@@ -42,7 +42,7 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
 
                     @Override
                     public void onError(Throwable e) {
-                        getView().onDisMiss();
+                        getView().onError(e.getMessage());
                     }
 
                     @Override

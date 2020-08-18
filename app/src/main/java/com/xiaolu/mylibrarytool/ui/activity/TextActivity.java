@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.gyf.immersionbar.ImmersionBar;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
@@ -40,7 +41,7 @@ public class TextActivity extends BaseActivity {
     }
 
     @Override
-    protected void initToolbar(ToolbarHelper toolbarHelper) {
+    protected void initToolbar(ToolbarHelper toolbarHelper, ImmersionBar immersionBar) {
 
     }
 

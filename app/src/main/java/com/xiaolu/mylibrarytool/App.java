@@ -3,7 +3,12 @@ package com.xiaolu.mylibrarytool;
 import android.app.Application;
 
 import com.xiaolu.mylibrary.MyLibrary;
+import com.xiaolu.mylibrary.load.core.Load;
 import com.xiaolu.mylibrarytool.api.RetrofitService;
+import com.xiaolu.mylibrarytool.callback.EmptyCallBack;
+import com.xiaolu.mylibrarytool.callback.ErrorCallBack;
+import com.xiaolu.mylibrarytool.callback.LoadCallBack;
+import com.xiaolu.mylibrarytool.callback.TimeOutCallBack;
 
 public class App extends Application {
     private static Application instance;
@@ -25,5 +30,12 @@ public class App extends Application {
         MyLibrary.getInstance()
                 .init(this)
                 .isDeBug(true);
+        Load.beginBuilder()
+                .addCallback(new LoadCallBack())
+                .addCallback(new ErrorCallBack())
+                .addCallback(new EmptyCallBack())
+                .addCallback(new TimeOutCallBack())
+                .setDefaultCallback(LoadCallBack.class)
+                .commit();
     }
 }
