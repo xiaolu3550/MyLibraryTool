@@ -4,21 +4,16 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/ll_load"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+
         <TextView
-            android:text="B"
-            android:textColor="@color/black"
             android:textSize="@dimen/sp_20"
+            android:textColor="@color/black"
             android:layout_gravity="center"
+            android:gravity="center"
+            android:text="C"
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-    </LinearLayout>
 
 </LinearLayout>

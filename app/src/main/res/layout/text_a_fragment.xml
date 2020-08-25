@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical">
+    <include layout="@layout/toolbar"/>
+
     <LinearLayout
         android:id="@+id/ll_load"
         android:layout_gravity="center"
@@ -11,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:text="B"
+            android:text="A"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_20"
             android:layout_gravity="center"
@@ -20,5 +22,4 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
 </LinearLayout>

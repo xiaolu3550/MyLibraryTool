@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 7
+        versionName "1.0.7"
     }
 
     buildTypes {
@@ -68,8 +68,14 @@ dependencies {
     api 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     //上拉刷新下拉加载
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-12'
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-12'
+    api  'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    api  'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
+    api  'com.scwang.smart:refresh-header-radar:2.0.1'       //雷达刷新头
+    api  'com.scwang.smart:refresh-header-falsify:2.0.1'     //虚拟刷新头
+    api  'com.scwang.smart:refresh-header-material:2.0.1'    //谷歌刷新头
+    api  'com.scwang.smart:refresh-header-two-level:2.0.1'   //二级刷新头
+    api  'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
+    api  'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
     //侧滑删除
     api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     //状态栏
@@ -90,7 +96,7 @@ publish {
     userOrg = 'xiaolu'                 //bintray.com用户名
     groupId = 'com.xiaolu'             //jcenter上的路径,bintray上创建Package时填写的Version control项
     artifactId = 'Mytool'        //项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.0.6'          //版本号
+    publishVersion = '1.0.8'          //版本号
     desc = '自用工具'
     website = 'https://github.com/xiaolu3550/MyLibraryTool'
 }

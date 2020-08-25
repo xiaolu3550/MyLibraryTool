@@ -2,15 +2,12 @@ package com.xiaolu.mylibrarytool.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.socks.library.KLog;
 import com.xiaolu.mylibrary.base.BaseFragment;
-import com.xiaolu.mylibrary.base.LazyFragment;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.App;
@@ -53,7 +50,7 @@ public class CFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceId() {
-        return R.layout.text_fragment;
+        return R.layout.text_c_fragment;
     }
 
     @Override
@@ -69,7 +66,7 @@ public class CFragment extends BaseFragment {
 
     @Override
     protected void doBusiness(Activity mActivity) {
-
+        tvText.setText("C Fragment");
     }
 
     @Override
@@ -87,6 +84,6 @@ public class CFragment extends BaseFragment {
     }
     @Override
     public boolean immersionBarEnabled() {
-        return false;
+        return true;
     }
 }

@@ -5,6 +5,12 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <com.xiaolu.mylibrarytool.ui.NoScrollViewPager
+        android:id="@+id/vp"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/tl"
         android:layout_width="match_parent"
@@ -21,10 +27,4 @@
         tl:tl_indicator_gravity="BOTTOM"
         tl:tl_textUnselectColor="@color/black"
         tl:tl_indicator_style="NORMAL" />
-    <com.xiaolu.mylibrarytool.ui.NoScrollViewPager
-        android:id="@+id/vp"
-        android:layout_weight="9"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-
 </LinearLayout>

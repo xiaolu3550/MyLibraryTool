@@ -20,6 +20,7 @@ import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
+import com.xiaolu.mylibrarytool.ui.activity.PlaceHolderActivity;
 import com.xiaolu.mylibrarytool.ui.activity.TextActivity;
 
 import butterknife.BindView;
@@ -156,7 +157,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
         return bindToLifecycle();
     }
 
-    @OnClick({R.id.btn_getVerifyCode, R.id.btn_login, R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog})
+    @OnClick({R.id.btn_getVerifyCode, R.id.btn_login, R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog,R.id.btn_open_place})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_getVerifyCode:
@@ -192,6 +193,9 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
                         .build();
                 build.show(MainActivity.this.getSupportFragmentManager(), "CustomDialog");
                 //  build.dismiss();
+                break;
+            case R.id.btn_open_place:
+                skipActivity(PlaceHolderActivity.class);
                 break;
             default:
                 break;

@@ -28,6 +28,7 @@ public class BasePresenter<V extends BaseContract.BaseView> {
      */
     public void detachView() {
         this.baseView = null;
+        this.register = null;
     }
 
     /**

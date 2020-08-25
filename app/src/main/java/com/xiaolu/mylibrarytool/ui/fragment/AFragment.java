@@ -55,7 +55,7 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
 
     @Override
     protected int setLayoutResourceId() {
-        return R.layout.text_fragment;
+        return R.layout.text_a_fragment;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
 
     @Override
     protected void doBusiness(Activity mActivity) {
-        tvText.setText("A Fragment");
+
     }
 
     @Override
@@ -81,7 +81,7 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
     @Override
     public SearchParkListPresenter initPresenter() {
         return new SearchParkListPresenter(llLoad, (BaseCallBack.OnReloadListener) v -> {
-            initDate();
+           initDate();
         });
     }
 
@@ -100,11 +100,12 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
 
     @Override
     public boolean immersionBarEnabled() {
-        return false;
+        return true;
     }
 
     @Override
     public void searchParkListSuccess(BaseListBean<SearchMonthParkListBean> searchMonthParkListBeanBaseObjectBean) {
+        tvText.setText("A Fragment");
         presenter.getLoadService().showSuccess();
     }
 
