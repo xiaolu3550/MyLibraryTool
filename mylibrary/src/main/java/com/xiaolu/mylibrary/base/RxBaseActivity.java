@@ -18,7 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.toast.ToastUtils;
 import com.socks.library.KLog;
-import com.tamsiree.rxtool.RxActivityTool;
+
+import com.tamsiree.rxkit.RxActivityTool;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
@@ -366,13 +367,6 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
     }
 
     /**
-     * 获取Activity栈
-     */
-    protected Stack<Activity> getActivityStack() {
-        return RxActivityTool.getActivityStack();
-    }
-
-    /**
      * 判断是否存在指定Activity
      *
      * @param packageName 包名
@@ -387,20 +381,10 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
      *
      * @param packageName 包名
      * @param className   类名
-     */
-    protected void launchActivity(String packageName, String className) {
-        RxActivityTool.launchActivity(mContext, packageName, className);
-    }
-
-    /**
-     * 打开指定的Activity
-     *
-     * @param packageName 包名
-     * @param className   类名
      * @param bundle
      */
     protected void launchActivity(String packageName, String className, Bundle bundle) {
-        RxActivityTool.launchActivity(mContext, packageName, className);
+        RxActivityTool.launchActivity(mContext, packageName, className,bundle);
     }
 
     /**

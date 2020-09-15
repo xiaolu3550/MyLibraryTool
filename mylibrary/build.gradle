@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 7
-        versionName "1.0.7"
+        versionCode 8
+        versionName "1.0.8"
     }
 
     buildTypes {
@@ -55,10 +55,13 @@ dependencies {
     //toast显示
     api 'com.hjq:toast:6.0'
     //基础工具库
-    api "com.github.vondear.RxTool:RxKit:2.4.3"
+    api 'com.github.tamsiree.RxTool:RxKit:2.6.2'
     //UI库
-    api "com.github.vondear.RxTool:RxUI:2.4.3"
-    api "com.github.tamsiree.RxTool:RxArcGisKit:v2.4.3"
+    api 'com.github.tamsiree.RxTool:RxUI:2.6.2'
+    //相机库
+    api 'com.github.tamsiree.RxTool:RxCamera:2.6.2'
+    //ArcGis For Android工具库（API：100.1以上版本）
+    api 'com.github.tamsiree.RxTool:RxArcGisKit:2.6.2'
     //log
     api 'com.github.zhaokaiqiang.klog:library:1.6.0'
     //butterknife
@@ -96,7 +99,7 @@ publish {
     userOrg = 'xiaolu'                 //bintray.com用户名
     groupId = 'com.xiaolu'             //jcenter上的路径,bintray上创建Package时填写的Version control项
     artifactId = 'Mytool'        //项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.0.8'          //版本号
+    publishVersion = '1.1.0'          //版本号
     desc = '自用工具'
     website = 'https://github.com/xiaolu3550/MyLibraryTool'
 }

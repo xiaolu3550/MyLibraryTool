@@ -13,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.tamsiree.rxtool.RxImageTool;
+import com.tamsiree.rxkit.RxImageTool;
+
 
 public class CustomDialog extends DialogFragment {
     private Context context;

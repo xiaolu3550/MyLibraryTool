@@ -19,13 +19,14 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.SimpleImmersionOwner;
 import com.gyf.immersionbar.components.SimpleImmersionProxy;
 import com.hjq.toast.ToastUtils;
+import com.tamsiree.rxkit.RxActivityTool;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
 import com.xiaolu.mylibrary.utils.EventBusUtil;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.socks.library.KLog;
-import com.tamsiree.rxtool.RxActivityTool;
+
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -294,15 +295,6 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
         startActivity(new Intent(mActivity, clz));
     }
 
-    /**
-     * 打开指定的Activity
-     *
-     * @param packageName 包名
-     * @param className   类名
-     */
-    protected void launchActivity(String packageName, String className) {
-        RxActivityTool.launchActivity(mActivity, packageName, className);
-    }
 
     /**
      * 打开指定的Activity
@@ -312,7 +304,7 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
      * @param bundle
      */
     protected void launchActivity(String packageName, String className, Bundle bundle) {
-        RxActivityTool.launchActivity(mActivity, packageName, className);
+        RxActivityTool.launchActivity(mActivity, packageName, className,bundle);
     }
 
     /**
