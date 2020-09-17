@@ -28,7 +28,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         MyLibrary.getInstance()
-                .init(this)
+                .init(this,false)
                 .isDeBug(true);
         Load.beginBuilder()
                 .addCallback(new LoadCallBack())

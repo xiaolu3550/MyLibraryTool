@@ -16,6 +16,10 @@ buildscript {
 }
 
 allprojects {
+    tasks.withType(Javadoc) {
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+    }
     repositories {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }

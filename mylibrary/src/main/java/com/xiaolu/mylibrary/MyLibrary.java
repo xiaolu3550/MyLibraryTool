@@ -9,7 +9,6 @@ import com.xiaolu.mylibrary.net.RetrofitClient;
 import com.socks.library.KLog;
 
 
-
 public class MyLibrary {
     private static MyLibrary myLibrary;
     private static Application application;
@@ -21,10 +20,16 @@ public class MyLibrary {
         return myLibrary;
     }
 
-    public MyLibrary init(Application context) {
+    public MyLibrary init(Application context, boolean enabled) {
         application = context;
         ToastUtils.init(context);
-        RxTool.init(context);
+        RxTool.init(context)
+                //以下为崩溃配置
+                .crashProfile()
+                //default: true
+                .enabled(enabled)
+                .apply();
+        ;
         return this;
     }
 
