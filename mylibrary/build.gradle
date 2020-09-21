@@ -7,7 +7,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 9
-        versionName "1.0.9"
+        versionName "1.1.0"
     }
 
     buildTypes {
@@ -93,13 +93,15 @@ dependencies {
     api 'com.gyf.immersionbar:immersionbar:3.0.0'
     //fragment快速实现（可选）
     api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+
+    api 'de.hdodenhof:circleimageview:3.0.1'
 }
 
 publish {
     userOrg = 'xiaolu'                 //bintray.com用户名
     groupId = 'com.xiaolu'             //jcenter上的路径,bintray上创建Package时填写的Version control项
     artifactId = 'Mytool'        //项目名称，bintray上创建Package时填写的Name项
-    publishVersion = '1.0.9'          //版本号
+    publishVersion = '1.1.0'          //版本号
     desc = '自用工具'
     website = 'https://github.com/xiaolu3550/MyLibraryTool'
 }

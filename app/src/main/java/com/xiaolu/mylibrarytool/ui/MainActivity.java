@@ -3,6 +3,7 @@ package com.xiaolu.mylibrarytool.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -157,7 +158,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
         return bindToLifecycle();
     }
 
-    @OnClick({R.id.btn_getVerifyCode, R.id.btn_login, R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog,R.id.btn_open_place})
+    @OnClick({R.id.btn_getVerifyCode, R.id.btn_login, R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog, R.id.btn_open_place})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_getVerifyCode:
@@ -174,8 +175,12 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
                 presenter.register("15905140019", code, "123456", "123456", "2");
                 break;
             case R.id.btn_open_dialog:
-                CustomDialog.Builder customDialog = new CustomDialog.Builder(mContext);
-                build = customDialog.view(R.layout.demo_dialog)
+                CustomDialog.Builder customDialog = new CustomDialog.Builder(mContext, R.layout.demo_dialog);
+                Button btn_cancel = customDialog.getView(R.id.btn_cancel);
+                Button btn_commit = customDialog.getView(R.id.btn_commit);
+                btn_cancel.setText("132");
+                btn_commit.setText("456");
+                build = customDialog
                         .style(R.style.style_dialog)
                         .heightdp(150)
                         .widthdp(250)

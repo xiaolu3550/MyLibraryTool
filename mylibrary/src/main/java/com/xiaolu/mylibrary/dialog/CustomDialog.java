@@ -69,14 +69,15 @@ public class CustomDialog extends DialogFragment {
         private int gravity = Gravity.CENTER;
 
 
-        public Builder(Context context) {
+        public Builder(Context context,int resView) {
             this.context = context;
+            view = LayoutInflater.from(context).inflate(resView, null);
         }
 
-        public Builder view(int resView) {
+        /*public Builder view(int resView) {
             view = LayoutInflater.from(context).inflate(resView, null);
             return this;
-        }
+        }*/
 
         public Builder heightpx(int val) {
             height = val;
@@ -128,6 +129,9 @@ public class CustomDialog extends DialogFragment {
             return this;
         }
 
+        public <T extends View> T getView(int viewRes) {
+            return view.findViewById(viewRes);
+        }
 
         public CustomDialog build() {
             return new CustomDialog(this);
