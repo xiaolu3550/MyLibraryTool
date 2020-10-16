@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 public class RecycleViewDivider extends RecyclerView.ItemDecoration {
 
     private Paint mPaint;
-    //取名mDivider似乎更恰当
     private Drawable mDrawable;
     //分割线高度，默认为1px
     private int mDividerHeight = 2;
@@ -49,7 +48,6 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
         //获取xml配置的参数
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         //typedArray.getDrawable(attr)这句是说我们可以通过我们的资源获得资源，使用我们的资源名attr去获得资源id
-        //看不懂就用自己写一个分割线的图片吧，方法：ContextCompat.getDrawable(context, drawableId);
         mDrawable = a.getDrawable(0);
         //官方的解释是：回收TypedArray，以便后面重用。在调用这个函数后，你就不能再使用这个TypedArray。
         //在TypedArray后调用recycle主要是为了缓存。

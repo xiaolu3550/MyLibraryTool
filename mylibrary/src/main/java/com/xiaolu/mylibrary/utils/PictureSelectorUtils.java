@@ -23,25 +23,44 @@ public class PictureSelectorUtils {
      * @param minSelectNum 最小图片选择数量
      * @param count        每行显示个数
      * @param isSingle     是否多选   PictureConfig.SINGLE or PictureConfig.MULTIPLE
+     * @param isCompress   是否压缩
+     * @param isEnableCrop 是否裁剪
      */
     public static void getPhoto(Activity activity, int type, int maxSelectNum, int minSelectNum
-            , int count, int isSingle, OnResultCallbackListener onResultCallbackListener) {
+            , int count, int isSingle, boolean isCompress, boolean isEnableCrop, OnResultCallbackListener onResultCallbackListener) {
         PictureSelector.create(activity)
-                .openGallery(type)//全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                //全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                .openGallery(type)
                 .imageEngine(GlideEngine.createGlideEngine())
-                .maxSelectNum(maxSelectNum)// 最大图片选择数量 int
-                .minSelectNum(minSelectNum)// 最小选择数量 int
-                .imageSpanCount(count)// 每行显示个数 int
-                .selectionMode(isSingle)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
-                .isCamera(true)// 是否显示拍照按钮 true or false
-                .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
-                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
-                .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
-                .imageFormat(PictureMimeType.ofPNG())// 拍照保存图片格式后缀,默认jpeg
-                .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
-                .isGif(false)// 是否显示gif图片 true or false
+                // 最大图片选择数量 int
+                .maxSelectNum(maxSelectNum)
+                // 最小选择数量 int
+                .minSelectNum(minSelectNum)
+                // 是否压缩
+                .isCompress(isCompress)
+                // 是否裁剪
+                .isEnableCrop(isEnableCrop)
+                // 每行显示个数 int
+                .imageSpanCount(count)
+                // 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
+                .selectionMode(isSingle)
+                // 是否显示拍照按钮 true or false
+                .isCamera(true)
+                // 裁剪框是否可拖拽 true or false
+                .freeStyleCropEnabled(true)
+                // 裁剪是否可旋转图片 true or false
+                .rotateEnabled(true)
+                // 裁剪是否可放大缩小图片 true or false
+                .scaleEnabled(true)
+                // 拍照保存图片格式后缀,默认jpeg
+                .imageFormat(PictureMimeType.ofPNG())
+                // 图片列表点击 缩放效果 默认true
+                .isZoomAnim(true)
+                // 是否显示gif图片 true or false
+                .isGif(false)
                 .minimumCompressSize(100)
-                .forResult(onResultCallbackListener);//结果回调onActivityResult code
+                //结果回调onActivityResult code
+                .forResult(onResultCallbackListener);
     }
 
     /**
@@ -53,23 +72,41 @@ public class PictureSelectorUtils {
      * @param minSelectNum 最小图片选择数量
      * @param count        每行显示个数
      * @param isSingle     是否多选   PictureConfig.SINGLE or PictureConfig.MULTIPLE
+     * @param isCompress   是否压缩
+     * @param isEnableCrop 是否裁剪
      */
     public static void getPhoto(Fragment fragment, int type, int maxSelectNum, int minSelectNum
-            , int count, int isSingle, OnResultCallbackListener onResultCallbackListener) {
+            , int count, int isSingle, boolean isCompress, boolean isEnableCrop, OnResultCallbackListener onResultCallbackListener) {
         PictureSelector.create(fragment)
-                .openGallery(type)//全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                //全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                .openGallery(type)
                 .imageEngine(GlideEngine.createGlideEngine())
-                .maxSelectNum(maxSelectNum)// 最大图片选择数量 int
-                .minSelectNum(minSelectNum)// 最小选择数量 int
-                .imageSpanCount(count)// 每行显示个数 int
-                .selectionMode(isSingle)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
-                .isCamera(true)// 是否显示拍照按钮 true or false
-                .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
-                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
-                .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
-                .imageFormat(PictureMimeType.ofPNG())// 拍照保存图片格式后缀,默认jpeg
-                .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
-                .isGif(false)// 是否显示gif图片 true or false
+                // 最大图片选择数量 int
+                .maxSelectNum(maxSelectNum)
+                // 最小选择数量 int
+                .minSelectNum(minSelectNum)
+                // 每行显示个数 int
+                .imageSpanCount(count)
+                // 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
+                .selectionMode(isSingle)
+                // 是否显示拍照按钮 true or false
+                .isCamera(true)
+                // 是否压缩
+                .isCompress(isCompress)
+                // 是否裁剪
+                .isEnableCrop(isEnableCrop)
+                // 裁剪框是否可拖拽 true or false
+                .freeStyleCropEnabled(true)
+                // 裁剪是否可旋转图片 true or false
+                .rotateEnabled(true)
+                // 裁剪是否可放大缩小图片 true or false
+                .scaleEnabled(true)
+                // 拍照保存图片格式后缀,默认jpeg
+                .imageFormat(PictureMimeType.ofPNG())
+                // 图片列表点击 缩放效果 默认true
+                .isZoomAnim(true)
+                // 是否显示gif图片 true or false
+                .isGif(false)
                 .minimumCompressSize(100)
                 .forResult(onResultCallbackListener);
     }
@@ -77,38 +114,58 @@ public class PictureSelectorUtils {
     /**
      * 拍照
      *
-     * @param activity 当前的Activity
-     * @param type     类型 PictureMimeType.ofImage() or ofAll() or ofVideo() or ofAudio()
+     * @param activity     当前的Activity
+     * @param type         类型 PictureMimeType.ofImage() or ofAll() or ofVideo() or ofAudio()
+     * @param isCompress   是否压缩
+     * @param isEnableCrop 是否裁剪
      */
     public static void getCamera(Activity activity, int type
-            , OnResultCallbackListener onResultCallbackListener) {
+            , boolean isCompress, boolean isEnableCrop, OnResultCallbackListener onResultCallbackListener) {
         PictureSelector.create(activity)
                 .openCamera(type)
                 .imageEngine(GlideEngine.createGlideEngine())
-                .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
-                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
-                .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
+                // 是否压缩
+                .isCompress(isCompress)
+                // 是否裁剪
+                .isEnableCrop(isEnableCrop)
+                // 裁剪框是否可拖拽 true or false
+                .freeStyleCropEnabled(true)
+                // 裁剪是否可旋转图片 true or false
+                .rotateEnabled(true)
+                // 裁剪是否可放大缩小图片 true or false
+                .scaleEnabled(true)
                 .minimumCompressSize(100)
-                .imageFormat(PictureMimeType.ofPNG())// 拍照保存图片格式后缀,默认jpeg
+                // 拍照保存图片格式后缀,默认jpeg
+                .imageFormat(PictureMimeType.ofPNG())
                 .forResult(onResultCallbackListener);
     }
 
     /**
      * 拍照
      *
-     * @param fragment 当前的Fragment
-     * @param type     类型 PictureMimeType.ofImage() or ofAll() or ofVideo() or ofAudio()
+     * @param fragment     当前的Fragment
+     * @param type         类型 PictureMimeType.ofImage() or ofAll() or ofVideo() or ofAudio()
+     * @param isCompress   是否压缩
+     * @param isEnableCrop 是否裁剪
      */
     public static void getCamera(Fragment fragment, int type
-            , OnResultCallbackListener onResultCallbackListener) {
+            , boolean isCompress, boolean isEnableCrop, OnResultCallbackListener onResultCallbackListener) {
         PictureSelector.create(fragment)
                 .openCamera(type)
                 .imageEngine(GlideEngine.createGlideEngine())
-                .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
-                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
-                .scaleEnabled(true)// 裁剪是否可放大缩小图片 true or false
+                // 是否压缩
+                .isCompress(isCompress)
+                // 是否裁剪
+                .isEnableCrop(isEnableCrop)
+                // 裁剪框是否可拖拽 true or false
+                .freeStyleCropEnabled(true)
+                // 裁剪是否可旋转图片 true or false
+                .rotateEnabled(true)
+                // 裁剪是否可放大缩小图片 true or false
+                .scaleEnabled(true)
                 .minimumCompressSize(100)
-                .imageFormat(PictureMimeType.ofPNG())// 拍照保存图片格式后缀,默认jpeg
+                // 拍照保存图片格式后缀,默认jpeg
+                .imageFormat(PictureMimeType.ofPNG())
                 .forResult(onResultCallbackListener);
     }
 }

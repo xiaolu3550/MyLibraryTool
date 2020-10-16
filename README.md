@@ -3,7 +3,7 @@
 #### jcenter
 [ ![Download](https://api.bintray.com/packages/xiaolu/maven/Mytool/images/download.svg?version=1.0.9) ](https://bintray.com/xiaolu/maven/Mytool/1.0.9/link)
 
-`implementation 'com.xiaolu:Mytool:1.0.9'`
+`implementation 'com.xiaolu:Mytool:1.1.2'`
 #### 在项目中build文件中添加支持butterknife
 
 `classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'`

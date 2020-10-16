@@ -79,22 +79,22 @@ public class CustomDialog extends DialogFragment {
             return this;
         }*/
 
-        public Builder heightpx(int val) {
+        public Builder heightPx(int val) {
             height = val;
             return this;
         }
 
-        public Builder widthpx(int val) {
+        public Builder widthPx(int val) {
             width = val;
             return this;
         }
 
-        public Builder heightdp(int val) {
+        public Builder heightDp(int val) {
             height = RxImageTool.dip2px(val);
             return this;
         }
 
-        public Builder widthdp(int val) {
+        public Builder widthDp(int val) {
             width = RxImageTool.dip2px(val);
             return this;
         }
@@ -119,7 +119,7 @@ public class CustomDialog extends DialogFragment {
             return this;
         }
 
-        public Builder cancelTouchout(boolean val) {
+        public Builder cancelTouchOut(boolean val) {
             cancelTouchout = val;
             return this;
         }
