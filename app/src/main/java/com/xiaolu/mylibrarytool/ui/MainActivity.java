@@ -23,6 +23,7 @@ import com.xiaolu.mylibrarytool.contract.DemoContract;
 import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
 import com.xiaolu.mylibrarytool.ui.activity.PlaceHolderActivity;
 import com.xiaolu.mylibrarytool.ui.activity.TextActivity;
+import com.xiaolu.mylibrarytool.utils.RxUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -47,6 +48,10 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     EditText etCode;
     @BindView(R.id.ll_load)
     LinearLayout ll_load;
+    @BindView(R.id.btn_getVerifyCode)
+    Button btn_getVerifyCode;
+    @BindView(R.id.btn_login)
+    Button btn_login;
     private CustomDialog build;
 
     @Override
@@ -102,7 +107,21 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void setListener() {
-
+        RxUtils.setOnClickListeners(1,view -> {
+            View view1 = (View) view;
+            switch ((view1).getId()) {
+                case R.id.btn_getVerifyCode:
+                    KLog.d("1111");
+                    presenter.getVerifyCode("15905140019", "1");
+                    break;
+                case R.id.btn_login:
+                    KLog.d("2222");
+                    presenter.login("15905140019", "123456", "2", "");
+                    break;
+                default:
+                    break;
+            }
+            }, btn_getVerifyCode,btn_login);
     }
 
     @Override
@@ -157,16 +176,16 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     public <T> LifecycleTransformer<T> bindToLifecycleS() {
         return bindToLifecycle();
     }
-
-    @OnClick({R.id.btn_getVerifyCode, R.id.btn_login, R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog, R.id.btn_open_place})
+//R.id.btn_getVerifyCode, R.id.btn_login,
+    @OnClick({ R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog, R.id.btn_open_place})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_getVerifyCode:
-                presenter.getVerifyCode("15905140019", "1");
-                break;
-            case R.id.btn_login:
-                presenter.login("15905140019", "123456", "2", "");
-                break;
+            //  case R.id.btn_getVerifyCode:
+            //     presenter.getVerifyCode("15905140019", "1");
+            //     break;
+            //    case R.id.btn_login:
+            //        presenter.login("15905140019", "123456", "2", "");
+            //        break;
             case R.id.btn_open:
                 skipActivity(TextActivity.class);
                 break;
@@ -182,8 +201,8 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
                 btn_commit.setText("456");
                 build = customDialog
                         .style(R.style.style_dialog)
-                        .heightdp(150)
-                        .widthdp(250)
+                        .heightDp(150)
+                        .widthDp(250)
                         .addViewOnclick(R.id.btn_cancel, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

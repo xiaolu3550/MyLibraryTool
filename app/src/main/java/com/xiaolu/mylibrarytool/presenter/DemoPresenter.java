@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 public class DemoPresenter extends BasePresenter<DemoContract.View> implements DemoContract.Presenter {
     private BaseObjectBean<GetVerifyCodeBean> mGetVerifyCodeBeanBaseObjectBean;
     private BaseObjectBean<LoginBean> mLoginBeanBaseObjectBean;
-    private DemoContract.Model demoModel;
+    private DemoModel demoModel;
 
     public DemoPresenter() {
         demoModel = new DemoModel();
