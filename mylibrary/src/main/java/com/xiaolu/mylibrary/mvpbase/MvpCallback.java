@@ -18,17 +18,47 @@ import androidx.lifecycle.LifecycleOwner;
  * ================================================
  */
 public interface MvpCallback<V extends IView & LifecycleOwner, P extends IPresenter<V>> {
-    //创建Presenter  调用在init中
+    /**
+     * 创建Presenter  调用在onCreate中
+     *
+     * @return
+     */
     P createPresenter();
 
     //创建View
+
+    /**
+     * 创建View
+     *
+     * @return
+     */
     V createView();
 
+    /**
+     * 获取Presenter
+     *
+     * @return
+     */
     P getPresenter();
 
+    /**
+     * 设置Presenter
+     *
+     * @param presenter
+     */
     void setPresenter(P presenter);
 
+    /**
+     * 获取View
+     *
+     * @return
+     */
     V getMvpView();
 
+    /**
+     * 设置View
+     *
+     * @param view
+     */
     void setMvpView(V view);
 }

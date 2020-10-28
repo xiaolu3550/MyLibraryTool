@@ -12,8 +12,6 @@ import com.socks.library.KLog;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.dialog.CustomDialog;
-import com.xiaolu.mylibrary.load.callback.BaseCallBack;
-import com.xiaolu.mylibrary.load.core.Load;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
@@ -21,9 +19,9 @@ import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
 import com.xiaolu.mylibrarytool.bean.LoginBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
-import com.xiaolu.mylibrarytool.ui.activity.PlaceHolderActivity;
 import com.xiaolu.mylibrarytool.ui.activity.TextActivity;
 import com.xiaolu.mylibrarytool.utils.RxUtils;
+import com.xiaolu.mylibrarytool.ui.activity.TextsActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -219,7 +217,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
                 //  build.dismiss();
                 break;
             case R.id.btn_open_place:
-                skipActivity(PlaceHolderActivity.class);
+                skipActivity(TextsActivity.class);
                 break;
             default:
                 break;

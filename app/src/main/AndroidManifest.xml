@@ -23,6 +23,7 @@
         <activity android:name=".ui.activity.TextActivity" />
         <activity android:name=".ui.activity.PlaceHolderActivity" />
         <activity android:name=".ui.view.TextActivity" />
+        <activity android:name=".ui.activity.TextsActivity" />
 
         <meta-data
             android:name="android.max_aspect"

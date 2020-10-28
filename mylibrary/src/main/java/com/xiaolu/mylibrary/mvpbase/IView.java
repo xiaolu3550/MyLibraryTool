@@ -20,5 +20,11 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
  * ================================================
  */
 public interface IView extends LifecycleOwner {
+    /**
+     * rxJavaLife
+     *
+     * @param <T>
+     * @return
+     */
     <T> LifecycleTransformer<T> bindToLifecycleS();
 }

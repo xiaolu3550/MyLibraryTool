@@ -27,7 +27,6 @@ public abstract class BaseMvpFragment<V extends IView, P extends IPresenter<V>> 
             mPresenter = createPresenter();
             try {
                 mPresenter.attachView((V) this);
-                //checkActivityAttached();
                 initDate();
             } catch (Exception e) {
                 new ClassCastException(this.toString() + "实现BasePresenter或者BaseView子类接口");

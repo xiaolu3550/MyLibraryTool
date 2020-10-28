@@ -15,9 +15,7 @@ public abstract class IBasePresenter<V extends IView, M extends IModel> {
     protected V baseView;
     protected LoadService register;
     protected M mModel;
-    /**
-     * 绑定的view
-     */
+
     /**
      * 绑定view，一般在初始化中调用该方法
      */
@@ -37,12 +35,19 @@ public abstract class IBasePresenter<V extends IView, M extends IModel> {
     protected abstract M createModel();
 
     /**
-     * 断开view，一般在onDestroy中调用
+     * 获取model
+     *
+     * @return
      */
-    @CallSuper
-    public void detachView() {
-        this.baseView = null;
-        this.register = null;
+    public M getModel() {
+        return mModel;
+    }
+
+    /**
+     * 获取连接的view
+     */
+    public V getView() {
+        return baseView;
     }
 
     /**
@@ -53,9 +58,6 @@ public abstract class IBasePresenter<V extends IView, M extends IModel> {
         return baseView != null;
     }
 
-    public M getModel() {
-        return mModel;
-    }
 
     public void setLoadService(Object object, BaseCallBack.OnReloadListener onReloadListener) {
         register = Load.getDefault().register(object, onReloadListener);
@@ -63,5 +65,15 @@ public abstract class IBasePresenter<V extends IView, M extends IModel> {
 
     public LoadService getLoadService() {
         return register;
+    }
+
+    /**
+     * 断开view，一般在onDestroy中调用
+     */
+    @CallSuper
+    public void detachView() {
+        this.baseView = null;
+        this.register = null;
+        this.mModel = null;
     }
 }
