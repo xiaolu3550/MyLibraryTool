@@ -93,7 +93,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
             immersionBar.statusBarDarkFont(true)
                     .titleBar(toolbar)
                     .init();
-            initToolbar(new ToolbarHelper(toolbar),immersionBar);
+            initToolbar(new ToolbarHelper(toolbar), immersionBar);
         }
 
         setContentView(mContextView);
@@ -112,6 +112,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
             EventBusUtil.register(this);
         }
     }
+
 
     /**
      * 设置Activity的状态
@@ -268,8 +269,6 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
-       /* if (RxTool.isFastClick(1000))
-            return;*/
         widgetClick(v);
     }
 
@@ -384,7 +383,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
      * @param bundle
      */
     protected void launchActivity(String packageName, String className, Bundle bundle) {
-        RxActivityTool.launchActivity(mContext, packageName, className,bundle);
+        RxActivityTool.launchActivity(mContext, packageName, className, bundle);
     }
 
     /**
@@ -496,6 +495,16 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
      */
     public void setScreenRoate(boolean isAllowScreenRoate) {
         this.isAllowScreenRoate = isAllowScreenRoate;
+    }
+
+    /**
+     * [是否强制横屏]
+     * 默认为否
+     *
+     * @param portarait
+     */
+    public void setPortarait(boolean portarait) {
+        isPortarait = portarait;
     }
 
     /**

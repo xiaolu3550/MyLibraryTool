@@ -38,7 +38,7 @@ public class RxUtils {
         MyRxView.clicks(target)
                 .throttleFirst(seconds, TimeUnit.SECONDS)
                 .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(o -> action.onClick(o));
+                .subscribe(action::onClick);
     }
 
 
@@ -55,7 +55,7 @@ public class RxUtils {
             MyRxView.clicks(view)
                     .throttleFirst(seconds, TimeUnit.SECONDS)
                     .subscribeOn(AndroidSchedulers.mainThread())
-                    .subscribe(o -> action.onClick(o));
+                    .subscribe(action::onClick);
         }
     }
 

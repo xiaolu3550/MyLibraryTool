@@ -5,6 +5,9 @@ import androidx.annotation.CallSuper;
 import com.xiaolu.mylibrary.load.callback.BaseCallBack;
 import com.xiaolu.mylibrary.load.core.Load;
 import com.xiaolu.mylibrary.load.core.LoadService;
+import com.xiaolu.mylibrary.net.RxManager;
+
+import io.reactivex.disposables.Disposable;
 
 /**
  * @author: zhaol

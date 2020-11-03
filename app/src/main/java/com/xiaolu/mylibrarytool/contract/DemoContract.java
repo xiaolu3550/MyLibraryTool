@@ -10,6 +10,7 @@ import io.reactivex.Observable;
 
 public interface DemoContract extends BaseContract {
     interface Model extends BaseModel {
+
         Observable<BaseObjectBean<GetVerifyCodeBean>> getVerifyCode(String phoneNumber, String businessType);
 
         Observable<BaseObjectBean<LoginBean>> login(String loginName, String password, String loginType, String verifyCode);

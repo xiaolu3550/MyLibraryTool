@@ -12,6 +12,8 @@ import com.socks.library.KLog;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.dialog.CustomDialog;
+import com.xiaolu.mylibrary.rxbus.RegisterRxBus;
+import com.xiaolu.mylibrary.rxbus.RxBus;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
@@ -50,6 +52,8 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     Button btn_getVerifyCode;
     @BindView(R.id.btn_login)
     Button btn_login;
+    @BindView(R.id.btn_open_place)
+    Button btn_open_place;
     private CustomDialog build;
 
     @Override
@@ -100,12 +104,18 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void initView(View view) {
+        RxBus.getInstance().register(this);
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxBus.getInstance().unRegister(this);
     }
 
     @Override
     public void setListener() {
-        RxUtils.setOnClickListeners(1,view -> {
+        RxUtils.setOnClickListeners(1, view -> {
             View view1 = (View) view;
             switch ((view1).getId()) {
                 case R.id.btn_getVerifyCode:
@@ -119,7 +129,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
                 default:
                     break;
             }
-            }, btn_getVerifyCode,btn_login);
+        }, btn_getVerifyCode, btn_login);
     }
 
     @Override
@@ -129,7 +139,17 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void doBusiness(Context mContext) {
+        //btn_open_place.sett
+    }
 
+    @RegisterRxBus(TextsActivity.class)
+    public void setText(String s) {
+        btn_open_place.setText(s);
+    }
+
+    @RegisterRxBus(TextActivity.class)
+    public void setText1(String s) {
+        btn_open_place.setText(s);
     }
 
     @Override
@@ -174,8 +194,9 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
     public <T> LifecycleTransformer<T> bindToLifecycleS() {
         return bindToLifecycle();
     }
-//R.id.btn_getVerifyCode, R.id.btn_login,
-    @OnClick({ R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog, R.id.btn_open_place})
+
+    //R.id.btn_getVerifyCode, R.id.btn_login,
+    @OnClick({R.id.btn_open, R.id.btn_re, R.id.btn_open_dialog, R.id.btn_open_place})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             //  case R.id.btn_getVerifyCode:

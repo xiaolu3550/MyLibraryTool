@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.xiaolu.mylibrary.mvpbase.IPresenter;
 import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.mvpbase.MvpCallback;
+import com.xiaolu.mylibrary.net.RxManager;
 
 /**
  * ================================================
@@ -64,6 +65,7 @@ public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> 
 
     @Override
     protected void onDestroy() {
+        RxManager.getInstance().clear(mPresenter.getClass().getName());
         if (isFinishing()) {
             setMvpView(null);
             setPresenter(null);
