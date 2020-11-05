@@ -29,7 +29,6 @@ public class MyLibrary {
                 //default: true
                 .enabled(enabled)
                 .apply();
-        ;
         return this;
     }
 

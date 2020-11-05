@@ -20,7 +20,7 @@ public class CustomDialog extends DialogFragment {
     private Context context;
     private int height, width;
     private boolean cancelTouchout;
-    private View view;
+    private final View view;
     private int resStyle = -1;
     private int gravity;
 

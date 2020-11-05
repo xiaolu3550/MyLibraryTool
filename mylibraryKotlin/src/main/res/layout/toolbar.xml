@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="#f4f8fa"
+    android:contentInsetStart="0dp"
+    android:contentInsetLeft="0dp"
+    android:elevation="0dp"
+    android:theme="@style/ToolbarTheme"
+    app:popupTheme="@style/toolBar_pop_item"
+    app:titleTextAppearance="@style/Toolbar.TitleText">
+
+    <TextView
+        android:id="@+id/toolbar_title_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left" />
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/toolbar_menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:paddingRight="17dp"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/toolbar_menu_title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:scaleType="center"
+        android:paddingRight="17dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/toolbar_menu_title_image_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:paddingRight="20dp"
+        android:visibility="gone" />
+
+</androidx.appcompat.widget.Toolbar>

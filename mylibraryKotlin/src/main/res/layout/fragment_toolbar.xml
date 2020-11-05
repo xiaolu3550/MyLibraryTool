@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#f4f8fa"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:elevation="0dp"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/toolBar_pop_item"
+        app:titleTextAppearance="@style/Toolbar.TitleText">
+
+        <ImageView
+            android:id="@+id/toolbar_menu_title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="17dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/toolbar_menu_title_image_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="20dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/toolbar_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="17dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/toolbar_title_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <View
+            android:id="@+id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#f4f8fa" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>
+
