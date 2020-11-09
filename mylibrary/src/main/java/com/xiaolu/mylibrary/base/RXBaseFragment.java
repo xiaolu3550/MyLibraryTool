@@ -19,14 +19,13 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.SimpleImmersionOwner;
 import com.gyf.immersionbar.components.SimpleImmersionProxy;
 import com.hjq.toast.ToastUtils;
+import com.socks.library.KLog;
 import com.tamsiree.rxkit.RxActivityTool;
-import com.trello.rxlifecycle2.components.support.RxFragment;
+import com.trello.rxlifecycle3.components.support.RxFragment;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
 import com.xiaolu.mylibrary.utils.EventBusUtil;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
-import com.socks.library.KLog;
-
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;

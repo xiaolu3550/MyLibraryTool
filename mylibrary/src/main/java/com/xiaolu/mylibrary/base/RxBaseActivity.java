@@ -20,7 +20,7 @@ import com.hjq.toast.ToastUtils;
 import com.socks.library.KLog;
 
 import com.tamsiree.rxkit.RxActivityTool;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
 import com.xiaolu.mylibrary.utils.EventBusUtil;
