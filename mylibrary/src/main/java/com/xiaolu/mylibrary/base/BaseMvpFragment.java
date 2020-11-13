@@ -7,6 +7,7 @@ import com.xiaolu.mylibrary.mvpbase.BasePresenter;
 import com.xiaolu.mylibrary.mvpbase.IPresenter;
 import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.mvpbase.MvpCallback;
+import com.xiaolu.mylibrary.net.RxManager;
 
 
 /**
@@ -56,6 +57,9 @@ public abstract class BaseMvpFragment<V extends IView, P extends IPresenter<V>> 
 
     @Override
     public void onDestroy() {
+        if (mPresenter != null) {
+            RxManager.getInstance().clear(mPresenter.getClass().getName());
+        }
         if (mPresenter != null) {
             setMvpView(null);
             setPresenter(null);

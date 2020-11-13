@@ -2,7 +2,8 @@ package com.xiaolu.mylibrary.mvpbase;
 
 import androidx.lifecycle.LifecycleOwner;
 
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle3.LifecycleTransformer;
+
 
 /**
  * ================================================

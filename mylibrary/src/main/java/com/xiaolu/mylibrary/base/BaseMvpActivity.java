@@ -65,7 +65,9 @@ public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> 
 
     @Override
     protected void onDestroy() {
-        RxManager.getInstance().clear(mPresenter.getClass().getName());
+        if (mPresenter != null) {
+            RxManager.getInstance().clear(mPresenter.getClass().getName());
+        }
         if (isFinishing()) {
             setMvpView(null);
             setPresenter(null);

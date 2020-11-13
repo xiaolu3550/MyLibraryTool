@@ -18,7 +18,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.toast.ToastUtils;
 import com.socks.library.KLog;
-
 import com.tamsiree.rxkit.RxActivityTool;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 import com.xiaolu.mylibrary.R;
@@ -28,8 +27,6 @@ import com.xiaolu.mylibrary.utils.ToolbarHelper;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.Stack;
 
 import butterknife.ButterKnife;
 
