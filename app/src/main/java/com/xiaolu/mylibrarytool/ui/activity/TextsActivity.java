@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseMvpActivity;
 import com.xiaolu.mylibrary.rxbus.RxBus;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;

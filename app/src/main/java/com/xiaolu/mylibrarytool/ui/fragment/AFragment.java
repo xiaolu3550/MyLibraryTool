@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseFragment;
 import com.xiaolu.mylibrary.load.callback.BaseCallBack;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;

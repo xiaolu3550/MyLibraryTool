@@ -9,7 +9,8 @@ import android.widget.LinearLayout;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.socks.library.KLog;
-import com.trello.rxlifecycle2.LifecycleTransformer;
+
+import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.dialog.CustomDialog;
 import com.xiaolu.mylibrary.rxbus.RegisterRxBus;

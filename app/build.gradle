@@ -33,4 +33,5 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
     implementation project(path: ':mylibrary')
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'com.tencent:mmkv-static:1.2.6'
 }

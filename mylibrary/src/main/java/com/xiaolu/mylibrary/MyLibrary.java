@@ -1,10 +1,12 @@
 package com.xiaolu.mylibrary;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.hjq.toast.ToastUtils;
 import com.tamsiree.rxkit.RxAppTool;
 import com.tamsiree.rxkit.RxTool;
+import com.tencent.mmkv.MMKV;
 import com.xiaolu.mylibrary.net.RetrofitClient;
 import com.socks.library.KLog;
 
@@ -39,6 +41,22 @@ public class MyLibrary {
 
     public RetrofitClient RetrofitConfig(String url) {
         return RetrofitClient.getInstance().setBaseUrl(url);
+    }
+
+    /**
+     * 初始化MMKV
+     *
+     * @param context 上下文
+     * @param path    mmkv 存储路径(可以为null)
+     * @return
+     */
+    public MyLibrary mmkvInit(Context context, String path) {
+        if (path == null) {
+            MMKV.initialize(context);
+        } else {
+            MMKV.initialize(path);
+        }
+        return this;
     }
 }
 
