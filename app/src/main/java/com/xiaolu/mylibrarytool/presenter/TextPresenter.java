@@ -13,10 +13,7 @@ import com.xiaolu.mylibrarytool.model.TextModel;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 /**
  * @author xiaol
@@ -43,7 +40,7 @@ public class TextPresenter extends IBasePresenter<ITextContract.View, ITextContr
     @Override
     public void login(String login, String password, String loginType, String verifyCode) {
         mModel.login(login, password, loginType, verifyCode)
-                .compose(RxScheduler.<BaseObjectBean<LoginBean>>Flo_io_main(1, TimeUnit.SECONDS))
+                .compose(RxScheduler.<BaseObjectBean<LoginBean>>floIoMain(1, TimeUnit.SECONDS))
                 .compose(getView().<BaseObjectBean<LoginBean>>bindToLifecycleS())
                 .subscribe(new RxObserver<BaseObjectBean<LoginBean>>(getClass().getName()) {
                     @Override

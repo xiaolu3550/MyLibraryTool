@@ -2,6 +2,7 @@ package com.xiaolu.mylibrarytool.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.dialog.CustomDialog;
 import com.xiaolu.mylibrary.rxbus.RegisterRxBus;
 import com.xiaolu.mylibrary.rxbus.RxBus;
+import com.xiaolu.mylibrary.utils.MMKV_Utils;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
@@ -80,6 +82,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
                 .statusBarDarkFont(true)
                 //  .reset()
                 .init();
+
     }
 
     @Override
@@ -140,7 +143,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void doBusiness(Context mContext) {
-        //btn_open_place.sett
+
     }
 
     @RegisterRxBus(TextsActivity.class)

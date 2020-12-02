@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.xiaolu.mylibrary.mvpbase.BaseContract;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.net.RxManager;
 
 
 /**
@@ -41,9 +42,20 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseCon
     @Override
     public void onDestroyView() {
         if (presenter != null) {
+            RxManager.getInstance().clear(presenter.getClass().getName());
+        }
+        if (presenter != null) {
             presenter.detachView();
         }
         super.onDestroyView();
+    }
+
+    @Override
+    public void onPause() {
+        if (presenter != null) {
+            RxManager.getInstance().clear(presenter.getClass().getName());
+        }
+        super.onPause();
     }
 
     @Override

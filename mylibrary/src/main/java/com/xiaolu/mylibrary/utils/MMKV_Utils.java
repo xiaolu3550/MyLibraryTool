@@ -2,10 +2,7 @@ package com.xiaolu.mylibrary.utils;
 
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
-
 import com.tencent.mmkv.MMKV;
-
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,6 +25,8 @@ import java.util.Set;
  */
 public class MMKV_Utils {
     private static MMKV_Utils mmkvUtils = null;
+    // 是否为多进程访问 默认为false
+    private boolean isMultithreading = false;
 
     public static MMKV_Utils getInstance() {
         if (mmkvUtils == null) {
@@ -47,12 +46,27 @@ public class MMKV_Utils {
         return MMKV.getRootDir();
     }
 
+    /**
+     * 设置是否为多线程访问 默认为false
+     *
+     * @param multithreading
+     * @return
+     */
+    public MMKV_Utils setMultithreading(boolean multithreading) {
+        isMultithreading = multithreading;
+        return this;
+    }
+
     private MMKV init() {
         return MMKV.defaultMMKV();
     }
 
     private MMKV init(String id) {
-        return MMKV.mmkvWithID(id);
+        if (isMultithreading) {
+            return MMKV.mmkvWithID(id);
+        } else {
+            return MMKV.mmkvWithID(id, MMKV.MULTI_PROCESS_MODE);
+        }
     }
 
     public void put(@NotNull String key, @NotNull Object valve) {
@@ -68,10 +82,10 @@ public class MMKV_Utils {
             init().encode(key, (float) valve);
         } else if (valve instanceof Double) {
             init().encode(key, (double) valve);
-        } else if (valve instanceof Byte[]) {
+        } else if (valve instanceof byte[]) {
             init().encode(key, (byte[]) valve);
         } else {
-            return;
+            init().encode(key, valve.toString());
         }
     }
 
@@ -96,10 +110,10 @@ public class MMKV_Utils {
             init(id).encode(key, (float) valve);
         } else if (valve instanceof Double) {
             init(id).encode(key, (double) valve);
-        } else if (valve instanceof Byte[]) {
+        } else if (valve instanceof byte[]) {
             init(id).encode(key, (byte[]) valve);
         } else {
-            return;
+            init(id).encode(key, valve.toString());
         }
     }
 

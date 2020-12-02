@@ -2,6 +2,7 @@ package com.xiaolu.mylibrarytool.presenter;
 
 import com.xiaolu.mylibrary.load.callback.BaseCallBack;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.net.RxObserver;
 import com.xiaolu.mylibrary.net.RxScheduler;
 import com.xiaolu.mylibrarytool.bean.BaseListBean;
 import com.xiaolu.mylibrarytool.bean.SearchMonthParkListBean;
@@ -10,8 +11,7 @@ import com.xiaolu.mylibrarytool.model.SearchParkListModel;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.annotations.NonNull;
 
 /**
  * ================================================
@@ -42,27 +42,11 @@ public class SearchParkListPresenter extends BasePresenter<SearchParkListContrac
     public void searchParkList(String name, String longitude, String latitude) {
         getView().onLoad();
         searchParkListModel.searchParkList(name, longitude, latitude)
-                .compose(RxScheduler.Flo_io_main(0, TimeUnit.SECONDS))
+                .compose(RxScheduler.floIoMain(0, TimeUnit.SECONDS))
                 .compose(getView().bindToLifecycleS())
-                .subscribe(new Observer<BaseListBean<SearchMonthParkListBean>>() {
+                .subscribe(new RxObserver<BaseListBean<SearchMonthParkListBean>>(getClass().getName()) {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(BaseListBean<SearchMonthParkListBean> searchMonthParkListBean) {
-                        mSearchMonthParkListBean = searchMonthParkListBean;
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        getView().onError(e.getMessage());
-
-                    }
-
-                    @Override
-                    public void onComplete() {
+                    public void onSuccess(@NonNull BaseListBean<SearchMonthParkListBean> searchMonthParkListBeanBaseListBean) {
                         if (isViewAttached()) {
                             if (mSearchMonthParkListBean.getCode().equals("0")) {
                                 getView().searchParkListSuccess(mSearchMonthParkListBean);
@@ -70,6 +54,11 @@ public class SearchParkListPresenter extends BasePresenter<SearchParkListContrac
                                 getView().onError(mSearchMonthParkListBean.getMsg());
                             }
                         }
+                    }
+
+                    @Override
+                    public void onErrors(@NonNull Throwable e) {
+                        getView().onError(e.getMessage());
                     }
                 });
     }

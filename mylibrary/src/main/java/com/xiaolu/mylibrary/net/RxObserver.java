@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable;
  * @ProjectName: MyLibraryTool
  * @Package: com.xiaolu.mylibrary.net
  * @ClassName: RxObserver
- * @Description: java类作用描述
+ * @Description: 自定义rxjavaObserver
  * @Author: xiaol
  * @CreateDate: 2020/11/3 16:49
  * @UpdateUser: xiaol

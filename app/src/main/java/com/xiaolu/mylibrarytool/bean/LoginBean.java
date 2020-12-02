@@ -1,6 +1,9 @@
 package com.xiaolu.mylibrarytool.bean;
 
-public class LoginBean {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class LoginBean implements Parcelable {
 
     /**
      * searchValue : null
@@ -45,6 +48,34 @@ public class LoginBean {
     private int delFlag;
     private int balance;
     private String token;
+
+    public LoginBean() {
+    }
+
+    public LoginBean(Parcel in) {
+        createTime = in.readString();
+        userId = in.readString();
+        userName = in.readString();
+        loginName = in.readString();
+        password = in.readString();
+        phoneNumber = in.readString();
+        status = in.readInt();
+        delFlag = in.readInt();
+        balance = in.readInt();
+        token = in.readString();
+    }
+
+    public static final Creator<LoginBean> CREATOR = new Creator<LoginBean>() {
+        @Override
+        public LoginBean createFromParcel(Parcel in) {
+            return new LoginBean(in);
+        }
+
+        @Override
+        public LoginBean[] newArray(int size) {
+            return new LoginBean[size];
+        }
+    };
 
     public Object getSearchValue() {
         return searchValue;
@@ -230,5 +261,24 @@ public class LoginBean {
                 ", balance=" + balance +
                 ", token='" + token + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(createTime);
+        dest.writeString(userId);
+        dest.writeString(userName);
+        dest.writeString(loginName);
+        dest.writeString(password);
+        dest.writeString(phoneNumber);
+        dest.writeInt(status);
+        dest.writeInt(delFlag);
+        dest.writeInt(balance);
+        dest.writeString(token);
     }
 }

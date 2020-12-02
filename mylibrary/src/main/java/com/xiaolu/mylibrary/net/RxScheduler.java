@@ -23,28 +23,16 @@ public class RxScheduler {
      * @return FlowableTransformer
      */
 
-    public static <T> ObservableTransformer<T, T> Flo_io_main(int timeOut, TimeUnit unit) {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .debounce(timeOut, unit);
-            }
-
-        };
+    public static <T> ObservableTransformer<T, T> floIoMain(int timeOut, TimeUnit unit) {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .debounce(timeOut, unit);
     }
 
-    public static <T> ObservableTransformer<T, T> Flo_io_io(int timeOut, TimeUnit unit) {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(Schedulers.io())
-                        .debounce(timeOut, unit);
-            }
-
-        };
+    public static <T> ObservableTransformer<T, T> floIoIo(int timeOut, TimeUnit unit) {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .debounce(timeOut, unit);
     }
 
 
@@ -55,15 +43,10 @@ public class RxScheduler {
      * @return ObservableTransformer
      */
 
-    public static <T> ObservableTransformer<T, T> Obs_io_main(int timeOut, TimeUnit unit) {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .debounce(timeOut, unit);
-            }
-        };
+    public static <T> ObservableTransformer<T, T> obsIoMain(int timeOut, TimeUnit unit) {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .debounce(timeOut, unit);
     }
 
 }

@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable;
  * @ProjectName: MyLibraryTool
  * @Package: com.xiaolu.mylibrary.net
  * @ClassName: RxApiManager
- * @Description: java类作用描述
+ * @Description: 取消网络请求
  * @Author: xiaol
  * @CreateDate: 2020/11/3 15:53
  * @UpdateUser: xiaol

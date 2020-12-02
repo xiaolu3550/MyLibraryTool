@@ -11,6 +11,7 @@ import java.util.Map;
 /**
  * SP缓存工具类
  */
+@Deprecated
 public final class PreferenceUtil {
 
     public PreferenceUtil() {
