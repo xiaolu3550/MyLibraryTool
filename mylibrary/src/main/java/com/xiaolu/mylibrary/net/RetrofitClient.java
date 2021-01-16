@@ -2,21 +2,12 @@ package com.xiaolu.mylibrary.net;
 
 
 import com.google.gson.Gson;
-import com.socks.library.KLog;
+import com.xiaolu.mylibrary.net.converter.LenientGsonConverterFactory;
+import com.xiaolu.mylibrary.net.interceptors.LoggingInterceptor;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import okio.Buffer;
-import okio.BufferedSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -55,7 +46,7 @@ public class RetrofitClient {
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 //设置拦截器
-                .addInterceptor(mLoggingInterceptor)
+                .addNetworkInterceptor(new LoggingInterceptor())
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -71,30 +62,4 @@ public class RetrofitClient {
         T apiService = retrofit.create(clazz);
         return apiService;
     }
-
-    private final Interceptor mLoggingInterceptor = new Interceptor() {
-        public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request();
-            long t1 = System.nanoTime();
-//            KLog.i(String.format("Sending request: %s on %s%n%s", request.url(), chain.connection()
-//            , request.headers(), request.body().toString()));
-            Response response = chain.proceed(request);
-            long t2 = System.nanoTime();
-            KLog.i(String.format(Locale.getDefault(), "Received response: for %s in %.1fms%n%s",
-                    response.request().url(), (double) (t2 - t1) / 1000000.0D, response.headers()));
-            ResponseBody body = response.body();
-            BufferedSource source = body.source();
-            source.request(9223372036854775807L);
-            Buffer buffer = source.buffer();
-            Charset charset = Charset.defaultCharset();
-            MediaType contentType = body.contentType();
-            if (contentType != null) {
-                charset = contentType.charset(charset);
-            }
-
-            String bodyString = buffer.clone().readString(charset);
-            KLog.i(bodyString);
-            return response;
-        }
-    };
 }

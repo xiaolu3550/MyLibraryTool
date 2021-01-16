@@ -1,4 +1,4 @@
-package com.xiaolu.mylibrary.net;
+package com.xiaolu.mylibrary.net.converter;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
