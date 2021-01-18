@@ -2,7 +2,7 @@ package com.xiaolu.mylibrarytool.presenter;
 
 import android.annotation.SuppressLint;
 
-import com.socks.library.KLog;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.mvpbase.IBasePresenter;
 import com.xiaolu.mylibrary.net.RxObserver;
 import com.xiaolu.mylibrary.net.RxScheduler;
@@ -32,7 +32,7 @@ public class TextPresenter extends IBasePresenter<ITextContract.View, ITextContr
 
     @Override
     public void onClick(String username, String password) {
-        KLog.d("username : " + username + "password : " + password);
+        LogUtil.d("username : " + username + "password : " + password);
         login(username, password, "2", "");
     }
 

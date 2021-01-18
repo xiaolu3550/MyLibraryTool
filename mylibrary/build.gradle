@@ -63,8 +63,6 @@ dependencies {
     api 'com.github.tamsiree.RxTool:RxCamera:2.6.2'
     //ArcGis For Android工具库（API：100.1以上版本）
     api 'com.github.tamsiree.RxTool:RxArcGisKit:2.6.2'
-    //log
-    api 'com.github.zhaokaiqiang.klog:library:1.6.0'
     //butterknife
     api 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'

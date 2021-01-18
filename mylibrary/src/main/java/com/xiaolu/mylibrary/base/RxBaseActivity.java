@@ -17,11 +17,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.toast.ToastUtils;
-import com.socks.library.KLog;
 import com.tamsiree.rxkit.RxActivityTool;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.utils.EventBusUtil;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 
@@ -69,7 +69,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KLog.d("onCreate", TAG + "-->onCreate()");
+        LogUtil.d("onCreate", TAG + "-->onCreate()");
         mContext = this;
         setWindow(getWindow());
         RxActivityTool.addActivity(this);
@@ -105,7 +105,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
         doBusiness(this);
         setListener();
         if (isRegisterEventBus()) {
-            KLog.d(TAG, "EventBusUtil --> register");
+            LogUtil.d(TAG, "EventBusUtil --> register");
             EventBusUtil.register(this);
         }
     }
@@ -281,40 +281,40 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
     @Override
     protected void onRestart() {
         super.onRestart();
-        KLog.d("onRestart", TAG + "-->onRestart()");
+        LogUtil.d("onRestart", TAG + "-->onRestart()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        KLog.d("onStart", TAG + "-->onStart()");
+        LogUtil.d("onStart", TAG + "-->onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         //  doBusiness(this);
-        KLog.d("onResume", TAG + "-->onResume()");
+        LogUtil.d("onResume", TAG + "-->onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        KLog.d("onPause", TAG + "-->onPause()");
+        LogUtil.d("onPause", TAG + "-->onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        KLog.d("onStop", TAG + "-->onStop()");
+        LogUtil.d("onStop", TAG + "-->onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        KLog.d("onDestroy", TAG + "-->onDestroy()");
+        LogUtil.d("onDestroy", TAG + "-->onDestroy()");
         if (isRegisterEventBus()) {
-            KLog.d(TAG, "EventBusUtil-->unregister");
+            LogUtil.d(TAG, "EventBusUtil-->unregister");
             EventBusUtil.unregister(this);
         }
     }

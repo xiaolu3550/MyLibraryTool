@@ -2,7 +2,6 @@ package com.xiaolu.mylibrary.base;
 
 
 import android.os.Bundle;
-
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,7 +20,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.socks.library.KLog;
+import com.xiaolu.mylibrary.log.LogUtil;
 
 /**
  * @ClassName: BaseDialog
@@ -41,7 +40,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KLog.d("onCreate", TAG + "-->onCreate()");
+        LogUtil.d("onCreate", TAG + "-->onCreate()");
         setStyle(DialogFragment.STYLE_NORMAL, getDialogStyle());
     }
 
@@ -49,7 +48,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        KLog.d("onCreateView", TAG + "-->onCreateView()");
+        LogUtil.d("onCreateView", TAG + "-->onCreateView()");
         if (mRootView == null) {
             mRootView = inflater.inflate(getDialogLayout(), container);
             mViews = new SparseArray<>();
@@ -66,7 +65,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        KLog.d("onViewCreated", TAG + "-->onViewCreated()");
+        LogUtil.d("onViewCreated", TAG + "-->onViewCreated()");
         bindView(savedInstanceState);
     }
 

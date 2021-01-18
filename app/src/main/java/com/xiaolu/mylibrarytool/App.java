@@ -2,10 +2,8 @@ package com.xiaolu.mylibrarytool;
 
 import android.app.Application;
 
-import com.socks.library.KLog;
 import com.xiaolu.mylibrary.MyLibrary;
 import com.xiaolu.mylibrary.load.core.Load;
-import com.xiaolu.mylibrary.utils.MMKV_Utils;
 import com.xiaolu.mylibrarytool.api.RetrofitService;
 import com.xiaolu.mylibrarytool.callback.EmptyCallBack;
 import com.xiaolu.mylibrarytool.callback.ErrorCallBack;

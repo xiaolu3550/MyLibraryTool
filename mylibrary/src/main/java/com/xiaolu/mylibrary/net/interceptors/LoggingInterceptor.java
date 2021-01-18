@@ -2,7 +2,7 @@ package com.xiaolu.mylibrary.net.interceptors;
 
 import android.text.TextUtils;
 
-import com.socks.library.KLog;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.utils.GsonUtils;
 
 import java.io.IOException;
@@ -81,22 +81,22 @@ public class LoggingInterceptor implements Interceptor {
 
         }
         if (!TextUtils.isEmpty(responseStr)) {
-            KLog.d(">>>请求URL--" + request.url().toString() + ">>>请求耗时：" + String.valueOf(tookMs));
+            LogUtil.d(">>>请求URL--" + request.url().toString() + ">>>请求耗时：" + String.valueOf(tookMs));
 
             if (!TextUtils.isEmpty(requestStr)) {
 
                 String decode = URLDecoder.decode(requestStr, "utf-8");
                 String[] split = decode.split("&");
-                KLog.json(GsonUtils.toJson(split));
+                LogUtil.json(GsonUtils.toJson(split));
             }
             if (!TextUtils.isEmpty(requestStr) && requestStr.length() > 500 * 50) {
                 requestStr = requestStr.substring(0, 500 * 50 - 1);
             }
-            KLog.d(requestStr);
+            LogUtil.d(requestStr);
             if (responseStr.length() > 500 * 50) {
                 responseStr = responseStr.substring(0, 500 * 50 - 1);
             }
-            KLog.d(responseStr);
+            LogUtil.d(responseStr);
         }
 
         return response;

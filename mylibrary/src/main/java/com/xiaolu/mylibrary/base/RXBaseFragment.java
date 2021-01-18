@@ -19,11 +19,11 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.SimpleImmersionOwner;
 import com.gyf.immersionbar.components.SimpleImmersionProxy;
 import com.hjq.toast.ToastUtils;
-import com.socks.library.KLog;
 import com.tamsiree.rxkit.RxActivityTool;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 import com.xiaolu.mylibrary.R;
 import com.xiaolu.mylibrary.eventbean.MessageEvent;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.utils.EventBusUtil;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 
@@ -68,12 +68,12 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KLog.d("onCreate", TAG + "-->onCreate()");
+        LogUtil.d("onCreate", TAG + "-->onCreate()");
         mActivity = getActivity();//获取fragment所依赖的activity的对象
         Bundle bundle = getArguments();
         initParams(bundle);
         if (isRegisterEventBus()) {
-            KLog.d("EventBusRegister", TAG + "-->register()");
+            LogUtil.d("EventBusRegister", TAG + "-->register()");
             EventBusUtil.register(this);
         }
     }
@@ -83,7 +83,7 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         myRootView = inflater.inflate(setLayoutResourceId(), container, false);
-        KLog.d("onCreateView", TAG + "-->onCreateView()");
+        LogUtil.d("onCreateView", TAG + "-->onCreateView()");
         return myRootView;
     }
 
@@ -91,7 +91,7 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        KLog.d("onViewCreated", TAG + "-->onViewCreated()");
+        LogUtil.d("onViewCreated", TAG + "-->onViewCreated()");
         toolbar = view.findViewById(setToolbarLayout() == 0 ? R.id.toolbar : setToolbarLayout());
         statusBarView = view.findViewById(R.id.status_bar_view);
         if (toolbar != null) {
@@ -158,7 +158,7 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mSimpleImmersionProxy.onActivityCreated(savedInstanceState);
-        KLog.d("onActivityCreated", TAG + "-->onActivityCreated()");
+        LogUtil.d("onActivityCreated", TAG + "-->onActivityCreated()");
 //        initDate();
         doBusiness(mActivity);
     }
@@ -303,7 +303,7 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
      * @param bundle
      */
     protected void launchActivity(String packageName, String className, Bundle bundle) {
-        RxActivityTool.launchActivity(mActivity, packageName, className,bundle);
+        RxActivityTool.launchActivity(mActivity, packageName, className, bundle);
     }
 
     /**
@@ -445,32 +445,32 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     @Override
     public void onResume() {
         super.onResume();
-        KLog.d("onResume", TAG + "-->onResume()");
+        LogUtil.d("onResume", TAG + "-->onResume()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        KLog.d("onStop", TAG + "-->onStop()");
+        LogUtil.d("onStop", TAG + "-->onStop()");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        KLog.d("onStart", TAG + "-->onStart()");
+        LogUtil.d("onStart", TAG + "-->onStart()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        KLog.d("onPause", TAG + "-->onPause()");
+        LogUtil.d("onPause", TAG + "-->onPause()");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         //页面销毁,恢复标记
-        KLog.d("onDestroyView", TAG + "-->onDestroyView()");
+        LogUtil.d("onDestroyView", TAG + "-->onDestroyView()");
         bind.unbind();
         mIsPrepare = false;
         mIsVisible = false;
@@ -480,9 +480,9 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     public void onDestroy() {
         super.onDestroy();
         mSimpleImmersionProxy.onDestroy();
-        KLog.d("onDestroy", TAG + "-->onDestroy()");
+        LogUtil.d("onDestroy", TAG + "-->onDestroy()");
         if (isRegisterEventBus()) {
-            KLog.d("EventBusUnRegister", TAG + "-->unregister()");
+            LogUtil.d("EventBusUnRegister", TAG + "-->unregister()");
             EventBusUtil.unregister(this);
         }
     }

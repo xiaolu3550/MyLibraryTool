@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.socks.library.KLog;
 import com.trello.rxlifecycle3.components.support.RxFragment;
+import com.xiaolu.mylibrary.log.LogUtil;
 
 import butterknife.ButterKnife;
 
@@ -40,7 +40,7 @@ public abstract class BaseLazyFragment extends RxFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KLog.d("onCreate", TAG + "-->onCreate()");
+        LogUtil.d("onCreate", TAG + "-->onCreate()");
         mActivity = getActivity();//获取fragment所依赖的activity的对象
         Bundle bundle = getArguments();
         initParams(bundle);
@@ -49,14 +49,14 @@ public abstract class BaseLazyFragment extends RxFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        KLog.d("onActivityCreated", TAG + "-->onActivityCreated()");
+        LogUtil.d("onActivityCreated", TAG + "-->onActivityCreated()");
         doBusiness(mActivity);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        KLog.d("onCreateView", TAG + "-->onCreateView()");
+        LogUtil.d("onCreateView", TAG + "-->onCreateView()");
         if (mRootView != null) {
             return mRootView;
         }
@@ -69,7 +69,7 @@ public abstract class BaseLazyFragment extends RxFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        KLog.d("onViewCreated", TAG + "-->onViewCreated()");
+        LogUtil.d("onViewCreated", TAG + "-->onViewCreated()");
     }
 
     protected abstract void initParams(Bundle bundle);
@@ -96,45 +96,45 @@ public abstract class BaseLazyFragment extends RxFragment {
     @Override
     public void onStart() {
         super.onStart();
-        KLog.d("onStart", TAG + "-->onStart()");
+        LogUtil.d("onStart", TAG + "-->onStart()");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        KLog.d("onResume", TAG + "-->onResume()");
+        LogUtil.d("onResume", TAG + "-->onResume()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        KLog.d("onStop", TAG + "-->onStop()");
+        LogUtil.d("onStop", TAG + "-->onStop()");
     }
 
 
     @Override
     public void onPause() {
         super.onPause();
-        KLog.d("onPause", TAG + "-->onPause()");
+        LogUtil.d("onPause", TAG + "-->onPause()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        KLog.d("onDestroy", TAG + "-->onDestroy()");
+        LogUtil.d("onDestroy", TAG + "-->onDestroy()");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        KLog.d("onDestroyView", TAG + "-->onDestroyView()");
+        LogUtil.d("onDestroyView", TAG + "-->onDestroyView()");
         ButterKnife.bind(getActivity()).unbind();
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        KLog.d("onDetach", TAG + "-->onDetach()");
+        LogUtil.d("onDetach", TAG + "-->onDetach()");
     }
 
     @Override

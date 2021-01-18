@@ -7,8 +7,8 @@ import com.hjq.toast.ToastUtils;
 import com.tamsiree.rxkit.RxAppTool;
 import com.tamsiree.rxkit.RxTool;
 import com.tencent.mmkv.MMKV;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.net.RetrofitClient;
-import com.socks.library.KLog;
 
 
 public class MyLibrary {
@@ -35,7 +35,7 @@ public class MyLibrary {
     }
 
     public MyLibrary isDeBug(boolean isDebug) {
-        KLog.init(isDebug, RxAppTool.getAppName(application));
+        LogUtil.init(isDebug, RxAppTool.getAppName(application));
         return this;
     }
 

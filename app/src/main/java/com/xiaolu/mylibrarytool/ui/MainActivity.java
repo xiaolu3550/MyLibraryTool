@@ -2,21 +2,18 @@ package com.xiaolu.mylibrarytool.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.socks.library.KLog;
-
 import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseActivity;
 import com.xiaolu.mylibrary.dialog.CustomDialog;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.rxbus.RegisterRxBus;
 import com.xiaolu.mylibrary.rxbus.RxBus;
-import com.xiaolu.mylibrary.utils.MMKV_Utils;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
@@ -25,8 +22,8 @@ import com.xiaolu.mylibrarytool.bean.LoginBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 import com.xiaolu.mylibrarytool.presenter.DemoPresenter;
 import com.xiaolu.mylibrarytool.ui.activity.TextActivity;
-import com.xiaolu.mylibrarytool.utils.RxUtils;
 import com.xiaolu.mylibrarytool.ui.activity.TextsActivity;
+import com.xiaolu.mylibrarytool.utils.RxUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -123,11 +120,11 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
             View view1 = (View) view;
             switch ((view1).getId()) {
                 case R.id.btn_getVerifyCode:
-                    KLog.d("1111");
+                    LogUtil.d("1111");
                     presenter.getVerifyCode("15905140019", "1");
                     break;
                 case R.id.btn_login:
-                    KLog.d("2222");
+                    LogUtil.d("2222");
                     presenter.login("15905140019", "123456", "2", "");
                     break;
                 default:
@@ -165,7 +162,7 @@ public class MainActivity extends BaseActivity<DemoPresenter, DemoContract.View>
 
     @Override
     public void loginSuccess(BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
-        KLog.d(loginBeanBaseObjectBean.toString());
+        LogUtil.d(loginBeanBaseObjectBean.toString());
         showBottomToast(loginBeanBaseObjectBean.toString());
     }
 
