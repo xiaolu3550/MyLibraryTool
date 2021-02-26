@@ -3,22 +3,25 @@ package com.xiaolu.mylibrarytool.ui.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseMvpActivity;
-import com.xiaolu.mylibrary.rxbus.RxBus;
+import com.xiaolu.mylibrary.log.LogUtil;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.contract.ITextContract;
+import com.xiaolu.mylibrarytool.databinding.TextActivityBinding;
 import com.xiaolu.mylibrarytool.presenter.TextPresenter;
 import com.xiaolu.mylibrarytool.utils.RxUtils;
 
 import butterknife.BindView;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Function;
 
 /**
  * @author xiaol
@@ -32,8 +35,12 @@ public class TextsActivity extends BaseMvpActivity<ITextContract.View, ITextCont
     EditText password;
     @BindView(R.id.et_name)
     EditText name;
-    @BindView(R.id.bt_login)
-    Button login;
+    //    @BindView(R.id.bt_login)
+    // Button login;
+    @BindView(R.id.ll)
+    LinearLayout ll;
+    private TextView mDeviceTxt;
+    private TextActivityBinding textActivityBinding;
 
     @Override
     protected void initToolbar(ToolbarHelper toolbarHelper, ImmersionBar immersionBar) {
@@ -47,12 +54,13 @@ public class TextsActivity extends BaseMvpActivity<ITextContract.View, ITextCont
 
     @Override
     public View bindView() {
-        return null;
+        textActivityBinding = TextActivityBinding.inflate(getLayoutInflater());
+        return textActivityBinding.getRoot();
     }
 
     @Override
     public int bindLayout() {
-        return R.layout.text_activity;
+        return 0;
     }
 
     @Override
@@ -62,18 +70,21 @@ public class TextsActivity extends BaseMvpActivity<ITextContract.View, ITextCont
 
     @Override
     public void initView(View view) {
-
+        textActivityBinding.btLogin.setOnClickListener(this);
+        textActivityBinding.btLogin.setText("ViewBinding");
     }
+
 
     @Override
     public void setListener() {
 
         RxUtils.setOnClickListeners(1, view -> {
-            String username = name.getText().toString().trim();
-            String passwords = password.getText().toString().trim();
-            mPresenter.onClick(username, passwords);
-            RxBus.getInstance().chainProcess(o -> "aaa", TextsActivity.class);
-        }, login);
+            LogUtil.d("点击了");
+            // String username = name.getText().toString().trim();
+            //   String passwords = password.getText().toString().trim();
+            //   mPresenter.onClick(username, passwords);
+            //RxBus.getInstance().chainProcess(o -> "aaa", TextsActivity.class);
+        }, textActivityBinding.btLogin);
     }
 
     @Override
@@ -109,6 +120,12 @@ public class TextsActivity extends BaseMvpActivity<ITextContract.View, ITextCont
     @Override
     public void loginError(String e) {
         showBottomToast(e);
+    }
+
+    @NonNull
+    @Override
+    public Lifecycle getLifecycle() {
+        return null;
     }
 }
 
