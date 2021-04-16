@@ -20,13 +20,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.trello.rxlifecycle3.components.support.RxDialogFragment;
 import com.xiaolu.mylibrary.log.LogUtil;
 
 /**
  * @ClassName: BaseDialog
  * @Description: : (dialog 基类)
  */
-public abstract class BaseDialog extends DialogFragment {
+public abstract class BaseDialog extends RxDialogFragment {
     protected final String TAG = this.getClass().getSimpleName();
 
     public enum DialogType {

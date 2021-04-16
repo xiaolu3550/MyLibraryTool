@@ -13,10 +13,11 @@ import androidx.lifecycle.Lifecycle;
 import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseMvpActivity;
-import com.xiaolu.mylibrary.log.LogUtil;
+import com.xiaolu.mylibrary.rxbus.RxBus;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.contract.ITextContract;
+
 import com.xiaolu.mylibrarytool.databinding.TextActivityBinding;
 import com.xiaolu.mylibrarytool.presenter.TextPresenter;
 import com.xiaolu.mylibrarytool.utils.RxUtils;
@@ -77,13 +78,11 @@ public class TextsActivity extends BaseMvpActivity<ITextContract.View, ITextCont
 
     @Override
     public void setListener() {
-
         RxUtils.setOnClickListeners(1, view -> {
-            LogUtil.d("点击了");
-            // String username = name.getText().toString().trim();
-            //   String passwords = password.getText().toString().trim();
-            //   mPresenter.onClick(username, passwords);
-            //RxBus.getInstance().chainProcess(o -> "aaa", TextsActivity.class);
+            String username = name.getText().toString().trim();
+            String passwords = password.getText().toString().trim();
+            mPresenter.onClick(username, passwords);
+            RxBus.getInstance().chainProcess(o -> "aaa", TextsActivity.class);
         }, textActivityBinding.btLogin);
     }
 
