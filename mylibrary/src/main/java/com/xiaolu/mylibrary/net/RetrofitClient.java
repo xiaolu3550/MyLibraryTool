@@ -57,6 +57,7 @@ public class RetrofitClient {
                 .addConverterFactory(LenientGsonConverterFactory.create(new Gson()))
                 //设置网络请求适配器，使其支持RxJava与RxAndroid
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                //.addCallAdapterFactory(ko.create())
                 .build();
         //创建—— 网络请求接口—— 实例
         T apiService = retrofit.create(clazz);

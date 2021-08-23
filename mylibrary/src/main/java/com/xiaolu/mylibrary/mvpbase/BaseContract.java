@@ -20,6 +20,7 @@ import com.trello.rxlifecycle3.LifecycleTransformer;
  * @Version: 1.0
  * ================================================
  */
+@Deprecated
 public interface BaseContract {
     interface BaseModel {
     }

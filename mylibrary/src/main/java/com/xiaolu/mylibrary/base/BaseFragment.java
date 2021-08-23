@@ -12,6 +12,7 @@ import com.xiaolu.mylibrary.net.RxManager;
  * @createdOn: 2018/5/17 16:19
  * @description: $desc$
  */
+@Deprecated
 public abstract class BaseFragment<P extends BasePresenter<V>, V extends BaseContract.BaseView> extends RXBaseFragment {
     protected P presenter;
 

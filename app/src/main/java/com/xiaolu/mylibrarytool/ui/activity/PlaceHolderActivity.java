@@ -2,19 +2,16 @@ package com.xiaolu.mylibrarytool.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.gyf.immersionbar.ImmersionBar;
-
-import com.xiaolu.mylibrary.base.BaseActivity;
-import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.base.BaseMvpActivity;
+import com.xiaolu.mylibrary.mvpbase.IPresenter;
+import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
-import com.xiaolu.mylibrarytool.R;
+import com.xiaolu.mylibrarytool.databinding.PlaceHolderActivityBinding;
 
-import butterknife.BindView;
 
 /**
  * ================================================
@@ -31,23 +28,12 @@ import butterknife.BindView;
  * @Version: 1.0
  * ================================================
  */
-public class PlaceHolderActivity extends BaseActivity {
-    @BindView(R.id.iv_back)
-    ImageView ivBack;
-    @BindView(R.id.iv_dao_hang)
-    ImageView ivDaoHang;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-    @BindView(R.id.tv_distance)
-    TextView tvDistance;
-    @BindView(R.id.tv_address)
-    TextView tvAddress;
-    @BindView(R.id.ll_go)
-    LinearLayout llGo;
+public class PlaceHolderActivity extends BaseMvpActivity<PlaceHolderActivityBinding, IView, IPresenter<IView>> {
+
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    protected PlaceHolderActivityBinding onCreateViewBinding(LayoutInflater layoutInflater) {
+        return PlaceHolderActivityBinding.inflate(layoutInflater);
     }
 
     @Override
@@ -58,16 +44,6 @@ public class PlaceHolderActivity extends BaseActivity {
     @Override
     public void initParms(Bundle parms) {
 
-    }
-
-    @Override
-    public View bindView() {
-        return null;
-    }
-
-    @Override
-    public int bindLayout() {
-        return R.layout.place_holder_activity;
     }
 
     @Override
@@ -95,4 +71,13 @@ public class PlaceHolderActivity extends BaseActivity {
 
     }
 
+    @Override
+    public IPresenter<IView> createPresenter() {
+        return null;
+    }
+
+    @Override
+    public IView createView() {
+        return null;
+    }
 }

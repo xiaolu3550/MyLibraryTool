@@ -8,10 +8,13 @@ import com.xiaolu.mylibrarytool.bean.LoginBean;
 import com.xiaolu.mylibrarytool.bean.RegisterBean;
 import com.xiaolu.mylibrarytool.contract.DemoContract;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 import java.util.TreeMap;
 
 import io.reactivex.Observable;
+import kotlinx.coroutines.CoroutineScope;
 
 public class DemoModel implements DemoContract.Model {
 
@@ -43,5 +46,21 @@ public class DemoModel implements DemoContract.Model {
         map.put("password", password);
         map.put("confirmPassword", confirmPassword);
         return App.getClient().register(RequestBodyUtils.setRequestBody_JSON(map));
+    }
+
+    @NotNull
+    @Override
+    public CoroutineScope getMainScope() {
+        return null;
+    }
+
+    @Override
+    public void setMainScope(@NotNull CoroutineScope mainScope) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

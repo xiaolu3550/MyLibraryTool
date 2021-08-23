@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 import com.xiaolu.mylibrary.log.LogUtil;
 
-import butterknife.ButterKnife;
+
 
 public abstract class BaseLazyFragment extends RxFragment {
     public final String TAG = getClass().getSimpleName();
@@ -61,7 +61,6 @@ public abstract class BaseLazyFragment extends RxFragment {
             return mRootView;
         }
         mRootView = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.bind(this, mRootView);
         mViewInflateFinished = true;
         return mRootView;
     }
@@ -128,7 +127,6 @@ public abstract class BaseLazyFragment extends RxFragment {
     public void onDestroyView() {
         super.onDestroyView();
         LogUtil.d("onDestroyView", TAG + "-->onDestroyView()");
-        ButterKnife.bind(getActivity()).unbind();
     }
 
     @Override

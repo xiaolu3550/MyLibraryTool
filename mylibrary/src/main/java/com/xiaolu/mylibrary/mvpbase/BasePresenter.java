@@ -9,6 +9,7 @@ import com.xiaolu.mylibrary.load.core.LoadService;
  * @createdOn: 2018/5/16 9:26
  * @description: MVP中presenter的父类
  */
+@Deprecated
 public class BasePresenter<V extends BaseContract.BaseView> {
     protected V baseView;
     protected LoadService register;

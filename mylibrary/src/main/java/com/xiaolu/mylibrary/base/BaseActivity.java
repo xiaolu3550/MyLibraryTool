@@ -22,6 +22,7 @@ import com.xiaolu.mylibrary.net.RxManager;
  * @Version: 1.0
  * ================================================
  */
+@Deprecated
 public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseContract.BaseView> extends RxBaseActivity {
     protected P presenter;
 

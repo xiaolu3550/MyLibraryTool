@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -24,16 +25,19 @@ android {
     viewBinding {
         enabled  = true
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
+    def kotlinCoroutineVersion = "1.3.5"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
     //implementation 'com.xiaolu:Mytool:1.0.0'
-    // 基础依赖包，必须要依赖
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
-// fragment快速实现（可选）
-    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
     implementation project(path: ':mylibrary')
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
-    implementation 'com.tencent:mmkv-static:1.2.6'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }

@@ -2,15 +2,21 @@ package com.xiaolu.mylibrarytool.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.xiaolu.mylibrary.base.BaseFragment;
+import com.xiaolu.mylibrary.base.BaseMvpActivity;
+import com.xiaolu.mylibrary.base.BaseMvpFragment;
 import com.xiaolu.mylibrary.load.callback.BaseCallBack;
+import com.xiaolu.mylibrary.mvpbase.IPresenter;
+import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.App;
 import com.xiaolu.mylibrarytool.R;
@@ -20,17 +26,16 @@ import com.xiaolu.mylibrarytool.callback.EmptyCallBack;
 import com.xiaolu.mylibrarytool.callback.ErrorCallBack;
 import com.xiaolu.mylibrarytool.callback.LoadCallBack;
 import com.xiaolu.mylibrarytool.contract.SearchParkListContract;
+import com.xiaolu.mylibrarytool.databinding.TextAFragmentBinding;
 import com.xiaolu.mylibrarytool.presenter.SearchParkListPresenter;
 
-import butterknife.BindView;
+import org.jetbrains.annotations.NotNull;
 
-public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkListContract.SearchParkListView> implements SearchParkListContract.SearchParkListView {
+public class AFragment extends BaseMvpFragment<TextAFragmentBinding, IView, IPresenter<IView>> {
     private static AFragment aFragment;
-    @BindView(R.id.tv_text)
-    TextView tvText;
-    @BindView(R.id.ll_load)
-    LinearLayout llLoad;
+
     private Toolbar toolbar;
+
     public static AFragment getInstance() {
         Bundle bundle = new Bundle();
 
@@ -49,13 +54,13 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
     }
 
     @Override
-    protected int setToolbarLayout() {
-        return 0;
+    protected TextAFragmentBinding onCreateViewBinding(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup parent) {
+        return TextAFragmentBinding.inflate(inflater);
     }
 
     @Override
-    protected int setLayoutResourceId() {
-        return R.layout.text_a_fragment;
+    protected int setToolbarLayout() {
+        return 0;
     }
 
     @Override
@@ -78,12 +83,7 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
 
     }
 
-    @Override
-    public SearchParkListPresenter initPresenter() {
-        return new SearchParkListPresenter(llLoad, (BaseCallBack.OnReloadListener) v -> {
-           initDate();
-        });
-    }
+
 
     @Override
     public void initImmersionBar() {
@@ -95,7 +95,7 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
 
     @Override
     public void initDate() {
-        presenter.searchParkList("", "0", "0");
+
     }
 
     @Override
@@ -104,33 +104,12 @@ public class AFragment extends BaseFragment<SearchParkListPresenter, SearchParkL
     }
 
     @Override
-    public void searchParkListSuccess(BaseListBean<SearchMonthParkListBean> searchMonthParkListBeanBaseObjectBean) {
-        tvText.setText("A Fragment");
-        presenter.getLoadService().showSuccess();
+    public IPresenter<IView> createPresenter() {
+        return null;
     }
 
     @Override
-    public void onError(String message) {
-        presenter.getLoadService().showCallback(ErrorCallBack.class);
-    }
-
-    @Override
-    public void onLoad() {
-        presenter.getLoadService().showCallback(LoadCallBack.class);
-    }
-
-    @Override
-    public void onDisMiss() {
-
-    }
-
-    @Override
-    public void onEmpty() {
-        presenter.getLoadService().showCallback(EmptyCallBack.class);
-    }
-
-    @Override
-    public <T> LifecycleTransformer<T> bindToLifecycleS() {
-        return bindToLifecycle();
+    public IView createView() {
+        return null;
     }
 }

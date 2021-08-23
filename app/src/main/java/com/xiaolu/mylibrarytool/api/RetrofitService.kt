@@ -1,18 +1,12 @@
-package com.xiaolu.mylibrarytool.api;
+package com.xiaolu.mylibrarytool.api
 
-import com.xiaolu.mylibrarytool.bean.BaseListBean;
-import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
-import com.xiaolu.mylibrarytool.bean.GetVerifyCodeBean;
-import com.xiaolu.mylibrarytool.bean.LoginBean;
-import com.xiaolu.mylibrarytool.bean.RegisterBean;
-import com.xiaolu.mylibrarytool.bean.SearchMonthParkListBean;
+import com.xiaolu.mylibrarytool.bean.*
+import io.reactivex.Observable
+import okhttp3.RequestBody
+import retrofit2.http.Body
+import retrofit2.http.POST
 
-import io.reactivex.Observable;
-import okhttp3.RequestBody;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
-
-public interface RetrofitService {
+interface RetrofitService {
     /**
      * 根据手机号获取验证码
      *
@@ -20,7 +14,7 @@ public interface RetrofitService {
      * @return
      */
     @POST("mobileUserManager/getVerifyCode")
-    Observable<BaseObjectBean<GetVerifyCodeBean>> getVerifyCode(@Body RequestBody requestBody);
+    fun getVerifyCode(@Body requestBody: RequestBody?): Observable<BaseObjectBean<GetVerifyCodeBean?>?>?
 
     /**
      * 根据手机号或账户名称、密码登录
@@ -29,7 +23,7 @@ public interface RetrofitService {
      * @return
      */
     @POST("mobileUserManager/loginCheck")
-    Observable<BaseObjectBean<LoginBean>> login(@Body RequestBody requestBody);
+    fun login(@Body requestBody: RequestBody?): Observable<BaseObjectBean<LoginBean?>?>?
 
     /**
      * 根据手机号或账户名称、密码登录
@@ -38,7 +32,7 @@ public interface RetrofitService {
      * @return
      */
     @POST("mobileUserManager/register")
-    Observable<BaseObjectBean<RegisterBean>> register(@Body RequestBody requestBody);
+    fun register(@Body requestBody: RequestBody?): Observable<BaseObjectBean<RegisterBean?>?>?
 
     /**
      * 根据手机号或账户名称、密码登录
@@ -47,5 +41,8 @@ public interface RetrofitService {
      * @return
      */
     @POST("monthCard/seachParkList")
-    Observable<BaseListBean<SearchMonthParkListBean>> searchParkList(@Body RequestBody requestBody);
+    fun searchParkList(@Body requestBody: RequestBody?): Observable<BaseListBean<SearchMonthParkListBean?>?>?
+
+    @POST("mall/homePage/without/getBanner")
+    suspend fun getBanner(): Any
 }

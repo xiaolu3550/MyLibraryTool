@@ -2,6 +2,8 @@ package com.xiaolu.mylibrary.base;
 
 import android.os.Bundle;
 
+import androidx.viewbinding.ViewBinding;
+
 import com.xiaolu.mylibrary.mvpbase.IPresenter;
 import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.mvpbase.MvpCallback;
@@ -22,7 +24,8 @@ import com.xiaolu.mylibrary.net.RxManager;
  * @Version: 1.0
  * ================================================
  */
-public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> extends RxBaseActivity
+public abstract class BaseMvpActivity<VB extends ViewBinding, V extends IView, P extends IPresenter<V>>
+        extends RxBaseActivity<VB>
         implements MvpCallback<V, P> {
     protected P mPresenter;
     protected V mView;
@@ -71,6 +74,7 @@ public abstract class BaseMvpActivity<V extends IView, P extends IPresenter<V>> 
         if (isFinishing()) {
             setMvpView(null);
             setPresenter(null);
+
         }
         super.onDestroy();
 

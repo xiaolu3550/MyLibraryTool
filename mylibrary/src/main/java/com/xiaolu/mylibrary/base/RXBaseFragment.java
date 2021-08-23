@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewbinding.ViewBinding;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.SimpleImmersionOwner;
@@ -30,15 +31,8 @@ import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
-
-abstract public class RXBaseFragment extends RxFragment implements SimpleImmersionOwner {
-    /**
-     * 根View
-     */
-    public View myRootView;
+abstract public class RXBaseFragment<VB extends ViewBinding> extends RxFragment implements SimpleImmersionOwner {
     /**
      * 当做Context去使用, MainActivity
      */
@@ -56,13 +50,14 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
      * 日志输出标志
      **/
     protected final String TAG = this.getClass().getSimpleName();
-    private Unbinder bind;
     /**
      * ImmersionBar代理类
      */
     private SimpleImmersionProxy mSimpleImmersionProxy = new SimpleImmersionProxy(this);
     private Toolbar toolbar;
     private View statusBarView;
+
+    private VB binding;
 
     //fragment创建
     @Override
@@ -82,9 +77,9 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        myRootView = inflater.inflate(setLayoutResourceId(), container, false);
+        binding = onCreateViewBinding(inflater, container);
         LogUtil.d("onCreateView", TAG + "-->onCreateView()");
-        return myRootView;
+        return binding.getRoot();
     }
 
     @SuppressLint("ResourceType")
@@ -100,7 +95,6 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
             initToolbar(new ToolbarHelper(toolbar));
         }
-        bind = ButterKnife.bind(this, view);
         fitsLayoutOverlap();
         initView();
         mIsPrepare = true;
@@ -111,6 +105,12 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
 
     protected void initToolbar(ToolbarHelper toolbarHelper) {
     }
+
+    public VB getBinding() {
+        return binding;
+    }
+
+    protected abstract VB onCreateViewBinding(@NonNull LayoutInflater inflater, @Nullable ViewGroup parent);
 
     /**
      * 是否注册事件分发
@@ -162,8 +162,6 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
 //        initDate();
         doBusiness(mActivity);
     }
-
-    protected abstract int setLayoutResourceId();
 
     /**
      * [初始化参数]
@@ -268,21 +266,6 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
      */
     protected void onLazyLoad() {
 
-    }
-
-    /**
-     * findViewById
-     *
-     * @param id
-     * @param <T>
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    protected <T extends View> T $(int id) {
-        if (myRootView == null) {
-            return null;
-        }
-        return (T) myRootView.findViewById(id);
     }
 
     /**
@@ -471,7 +454,7 @@ abstract public class RXBaseFragment extends RxFragment implements SimpleImmersi
         super.onDestroyView();
         //页面销毁,恢复标记
         LogUtil.d("onDestroyView", TAG + "-->onDestroyView()");
-        bind.unbind();
+        binding = null;
         mIsPrepare = false;
         mIsVisible = false;
     }

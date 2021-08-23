@@ -1,6 +1,6 @@
 package com.xiaolu.mylibrarytool.presenter;
 
-import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.mvpbase.IBasePresenter;
 import com.xiaolu.mylibrary.net.RxObserver;
 import com.xiaolu.mylibrary.net.RxScheduler;
 import com.xiaolu.mylibrarytool.bean.BaseObjectBean;
@@ -16,19 +16,14 @@ import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 
-public class DemoPresenter extends BasePresenter<DemoContract.View> implements DemoContract.Presenter {
+public class DemoPresenter extends IBasePresenter<DemoContract.View,DemoContract.Model> implements DemoContract.Presenter {
     private BaseObjectBean<GetVerifyCodeBean> mGetVerifyCodeBeanBaseObjectBean;
     private BaseObjectBean<LoginBean> mLoginBeanBaseObjectBean;
     private DemoModel demoModel;
 
-    public DemoPresenter() {
-        demoModel = new DemoModel();
-    }
-
     @Override
     public void getVerifyCode(String phoneNumber, String businessType) {
-        getView().onLoad();
-        demoModel.getVerifyCode(phoneNumber, businessType)
+           demoModel.getVerifyCode(phoneNumber, businessType)
                 .compose(RxScheduler.<BaseObjectBean<GetVerifyCodeBean>>floIoMain(1, TimeUnit.SECONDS))
                 .compose(getView().<BaseObjectBean<GetVerifyCodeBean>>bindToLifecycleS())
                 .subscribe(new Observer<BaseObjectBean<GetVerifyCodeBean>>() {
@@ -44,7 +39,7 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
 
                     @Override
                     public void onError(Throwable e) {
-                        getView().onError(e.getMessage());
+                       // getView().(e.getMessage());
                     }
 
                     @Override
@@ -53,17 +48,16 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
                             if (mGetVerifyCodeBeanBaseObjectBean.getCode().equals("0")) {
                                 getView().getVerifyCodeSuccess(mGetVerifyCodeBeanBaseObjectBean);
                             } else {
-                                getView().onError(mGetVerifyCodeBeanBaseObjectBean.getMsg());
+                               // getView().onError(mGetVerifyCodeBeanBaseObjectBean.getMsg());
                             }
                         }
-                        getView().onDisMiss();
+                       // getView().onDisMiss();
                     }
                 });
     }
 
     @Override
     public void login(String login, String password, String loginType, String verifyCode) {
-        getView().onLoad();
         demoModel.login(login, password, loginType, verifyCode)
                 .compose(RxScheduler.<BaseObjectBean<LoginBean>>floIoMain(1, TimeUnit.SECONDS))
                 .compose(getView().<BaseObjectBean<LoginBean>>bindToLifecycleS())
@@ -75,25 +69,24 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
                                 if (mLoginBeanBaseObjectBean.getCode().equals("0")) {
                                     getView().loginSuccess(mLoginBeanBaseObjectBean);
                                 } else {
-                                    getView().onError(mLoginBeanBaseObjectBean.getMsg());
+                                  //  getView().onError(mLoginBeanBaseObjectBean.getMsg());
                                 }
                             } else {
-                                getView().onError("");
+                               // getView().onError("");
                             }
                         }
-                        getView().onDisMiss();
+                      //  getView().onDisMiss();
                     }
 
                     @Override
                     public void onErrors(@NonNull Throwable e) {
-                        getView().onDisMiss();
+                        //getView().onDisMiss();
                     }
                 });
     }
 
     @Override
     public void register(String phoneNumber, String verifyCode, String password, String confirmPassword, String loginType) {
-        getView().onLoad();
         demoModel.register(phoneNumber, verifyCode, password, confirmPassword, loginType)
                 .compose(RxScheduler.<BaseObjectBean<RegisterBean>>floIoIo(1, TimeUnit.SECONDS))
                 .flatMap((registerBeanBaseObjectBean) -> {
@@ -112,19 +105,24 @@ public class DemoPresenter extends BasePresenter<DemoContract.View> implements D
                                 if (mLoginBeanBaseObjectBean.getCode().equals("0")) {
                                     getView().loginSuccess(mLoginBeanBaseObjectBean);
                                 } else {
-                                    getView().onError(mLoginBeanBaseObjectBean.getMsg());
+                                   // getView().onError(mLoginBeanBaseObjectBean.getMsg());
                                 }
                             } else {
-                                getView().onError("");
+                               // getView().onError("");
                             }
                         }
-                        getView().onDisMiss();
+                      //  getView().onDisMiss();
                     }
 
                     @Override
                     public void onErrors(@NonNull Throwable e) {
-                        getView().onDisMiss();
+                       // getView().onDisMiss();
                     }
                 });
+    }
+
+    @Override
+    protected DemoContract.Model createModel() {
+        return new DemoModel();
     }
 }

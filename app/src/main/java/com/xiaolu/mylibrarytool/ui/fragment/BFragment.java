@@ -2,23 +2,25 @@ package com.xiaolu.mylibrarytool.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.xiaolu.mylibrary.base.BaseFragment;
+import com.xiaolu.mylibrary.base.BaseMvpFragment;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.mvpbase.IPresenter;
+import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
 import com.xiaolu.mylibrarytool.R;
+import com.xiaolu.mylibrarytool.databinding.TextFragmentBinding;
 
-import butterknife.BindView;
+import org.jetbrains.annotations.NotNull;
 
-public class BFragment extends BaseFragment {
+public class BFragment extends BaseMvpFragment<TextFragmentBinding, IView, IPresenter<IView>> {
     private static BFragment bFragment;
-    @BindView(R.id.tv_text)
-    TextView tvText;
-    @BindView(R.id.ll_load)
-    LinearLayout llLoad;
-
 
     public static BFragment getInstance() {
         Bundle bundle = new Bundle();
@@ -36,19 +38,13 @@ public class BFragment extends BaseFragment {
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    protected TextFragmentBinding onCreateViewBinding(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup parent) {
+        return TextFragmentBinding.inflate(inflater);
     }
-
 
     @Override
     protected int setToolbarLayout() {
         return 0;
-    }
-
-    @Override
-    protected int setLayoutResourceId() {
-        return R.layout.text_fragment;
     }
 
     @Override
@@ -64,7 +60,7 @@ public class BFragment extends BaseFragment {
 
     @Override
     protected void doBusiness(Activity mActivity) {
-        tvText.setText("B");
+       getBinding().tvText.setText("B");
 
     }
 
@@ -82,5 +78,15 @@ public class BFragment extends BaseFragment {
     @Override
     public boolean immersionBarEnabled() {
         return false;
+    }
+
+    @Override
+    public IPresenter<IView> createPresenter() {
+        return null;
+    }
+
+    @Override
+    public IView createView() {
+        return null;
     }
 }

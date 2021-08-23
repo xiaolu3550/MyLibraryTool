@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewbinding.ViewBinding;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.toast.ToastUtils;
@@ -27,8 +28,6 @@ import com.xiaolu.mylibrary.utils.ToolbarHelper;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import butterknife.ButterKnife;
 
 /**
  * ================================================
@@ -45,7 +44,7 @@ import butterknife.ButterKnife;
  * @Version: 1.0
  * ================================================
  */
-public abstract class RxBaseActivity extends RxAppCompatActivity implements View.OnClickListener {
+public abstract class RxBaseActivity<VB extends ViewBinding> extends RxAppCompatActivity implements View.OnClickListener {
     /**
      * 是否禁止旋转屏幕
      **/
@@ -64,6 +63,7 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
     protected final String TAG = this.getClass().getSimpleName();
 
     public Context mContext;
+    protected VB viewBinder;
 
     @SuppressLint("ResourceType")
     @Override
@@ -74,14 +74,10 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
         setWindow(getWindow());
         RxActivityTool.addActivity(this);
         Bundle bundle = getIntent().getExtras();
-        View mView = bindView();
         initParms(bundle);
-        if (null == mView) {
-            mContextView = LayoutInflater.from(this).inflate(bindLayout(), null);
-        } else {
-            mContextView = mView;
-        }
-        Toolbar toolbar = mContextView.findViewById(setToolbarLayout() == 0 ? R.id.toolbar : setToolbarLayout());
+        viewBinder = onCreateViewBinding(getLayoutInflater());
+        setContentView(viewBinder.getRoot());
+        Toolbar toolbar = viewBinder.getRoot().findViewById(setToolbarLayout() == 0 ? R.id.toolbar : setToolbarLayout());
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             // 默认不显示原生标题
@@ -92,16 +88,13 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
                     .init();
             initToolbar(new ToolbarHelper(toolbar), immersionBar);
         }
-
-        setContentView(mContextView);
-        ButterKnife.bind(this);
         if (!isAllowScreenRoate) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         if (isPortarait) {
             isPortarait();
         }
-        initView(mContextView);
+        initView(viewBinder.getRoot());
         doBusiness(this);
         setListener();
         if (isRegisterEventBus()) {
@@ -110,7 +103,11 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
         }
     }
 
+    protected abstract VB onCreateViewBinding(LayoutInflater layoutInflater);
 
+    public VB getBinding() {
+        return viewBinder;
+    }
     /**
      * 设置Activity的状态
      *
@@ -205,20 +202,6 @@ public abstract class RxBaseActivity extends RxAppCompatActivity implements View
      */
     public abstract void initParms(Bundle parms);
 
-
-    /**
-     * [绑定视图]
-     *
-     * @return
-     */
-    public abstract View bindView();
-
-    /**
-     * [绑定布局]
-     *
-     * @return
-     */
-    public abstract int bindLayout();
 
     /**
      * [绑定布局]

@@ -2,41 +2,37 @@ package com.xiaolu.mylibrarytool.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
-import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.gyf.immersionbar.ImmersionBar;
-import com.xiaolu.mylibrary.base.BaseActivity;
-import com.xiaolu.mylibrary.mvpbase.BasePresenter;
+import com.xiaolu.mylibrary.base.BaseMvpActivity;
+import com.xiaolu.mylibrary.mvpbase.IPresenter;
+import com.xiaolu.mylibrary.mvpbase.IView;
 import com.xiaolu.mylibrary.utils.ToolbarHelper;
-import com.xiaolu.mylibrarytool.R;
 import com.xiaolu.mylibrarytool.bean.TextTabEntity;
+import com.xiaolu.mylibrarytool.databinding.ActivityTextBinding;
 import com.xiaolu.mylibrarytool.ui.MyPagerAdapter;
-import com.xiaolu.mylibrarytool.ui.NoScrollViewPager;
 import com.xiaolu.mylibrarytool.ui.fragment.AFragment;
 import com.xiaolu.mylibrarytool.ui.fragment.BFragment;
 import com.xiaolu.mylibrarytool.ui.fragment.CFragment;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
+public class TextActivity extends BaseMvpActivity<ActivityTextBinding, IView, IPresenter<IView>> {
 
-public class TextActivity extends BaseActivity {
-    @BindView(R.id.tl)
-    SlidingTabLayout tl;
-    @BindView(R.id.vp)
-    NoScrollViewPager vp;
     private String[] title = new String[]{"测试一", "测试二", "测试三"};
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
+
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    protected ActivityTextBinding onCreateViewBinding(LayoutInflater layoutInflater) {
+        return ActivityTextBinding.inflate(layoutInflater);
     }
 
     @Override
@@ -48,8 +44,8 @@ public class TextActivity extends BaseActivity {
         fragments.add(AFragment.getInstance());
         fragments.add(BFragment.getInstance());
         fragments.add(CFragment.getInstance());
-        vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), title, fragments));
-        tl.setViewPager(vp, title);
+        getBinding().vp.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), title, fragments));
+        getBinding().tl.setViewPager(getBinding().vp, title);
         for (int i = 0; i < title.length; i++) {
             mTabEntities.add(new TextTabEntity(title[i]));
         }
@@ -60,15 +56,6 @@ public class TextActivity extends BaseActivity {
 
     }
 
-    @Override
-    public View bindView() {
-        return null;
-    }
-
-    @Override
-    public int bindLayout() {
-        return R.layout.activity_text;
-    }
 
     @Override
     public int setToolbarLayout() {
@@ -82,10 +69,10 @@ public class TextActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-        tl.setOnTabSelectListener(new OnTabSelectListener() {
+        getBinding().tl.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                vp.setCurrentItem(position);
+                getBinding().vp.setCurrentItem(position);
 
             }
 
@@ -94,7 +81,7 @@ public class TextActivity extends BaseActivity {
 
             }
         });
-        vp.setCurrentItem(0);
+        getBinding().vp.setCurrentItem(0);
     }
 
     @Override
@@ -107,4 +94,13 @@ public class TextActivity extends BaseActivity {
 
     }
 
+    @Override
+    public IPresenter<IView> createPresenter() {
+        return null;
+    }
+
+    @Override
+    public IView createView() {
+        return null;
+    }
 }

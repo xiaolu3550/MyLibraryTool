@@ -2,6 +2,8 @@ package com.xiaolu.mylibrary.base;
 
 import android.os.Bundle;
 
+import androidx.viewbinding.ViewBinding;
+
 import com.xiaolu.mylibrary.mvpbase.BaseContract;
 import com.xiaolu.mylibrary.mvpbase.BasePresenter;
 import com.xiaolu.mylibrary.mvpbase.IPresenter;
@@ -15,7 +17,7 @@ import com.xiaolu.mylibrary.net.RxManager;
  * @createdOn: 2018/5/17 16:19
  * @description: $desc$
  */
-public abstract class BaseMvpFragment<V extends IView, P extends IPresenter<V>> extends RXBaseFragment
+public abstract class BaseMvpFragment<VB extends ViewBinding, V extends IView, P extends IPresenter<V>> extends RXBaseFragment<VB>
         implements MvpCallback<V, P> {
     protected P mPresenter;
     protected V mView;
