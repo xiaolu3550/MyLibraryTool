@@ -12,7 +12,7 @@ import com.xiaolu.mylibrarytool.callback.TimeOutCallBack;
 public class App extends BaseApplication {
     public static RetrofitService getClient() {
         return MyLibrary.getInstance()
-                .RetrofitConfig("http://172.22.17.243:12008/")
+                .RetrofitConfig("http://146.56.197.42:12002/root/")
                 .getApi(RetrofitService.class);
     }
 

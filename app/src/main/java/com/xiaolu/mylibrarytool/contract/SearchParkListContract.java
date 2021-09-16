@@ -24,7 +24,7 @@ import io.reactivex.Observable;
 public interface SearchParkListContract extends BaseContract {
 
     interface SearchParkListModel extends BaseModel {
-        Observable<BaseListBean<SearchMonthParkListBean>> searchParkList(String name, String longitude, String latitude);
+
     }
 
     interface SearchParkListView extends BaseView {

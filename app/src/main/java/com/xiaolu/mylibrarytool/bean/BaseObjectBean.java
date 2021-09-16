@@ -9,8 +9,10 @@ public class BaseObjectBean<T> {
     private String code;
     private String msg;
     private T data;
-    private String sign;
-    private String merchantId;
+
+    public boolean isSuccess() {
+        return code.equals("000000");
+    }
 
     public String getCode() {
         return code;
@@ -36,30 +38,10 @@ public class BaseObjectBean<T> {
         this.data = data;
     }
 
-    public String getSign() {
-        return sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
-    public String getMerchantId() {
-        return merchantId;
-    }
-
-    public void setMerchantId(String merchantId) {
-        this.merchantId = merchantId;
-    }
-
     @Override
     public String toString() {
         return "BaseObjectBean{" +
-                "code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                ", sign='" + sign + '\'' +
-                ", merchantId='" + merchantId + '\'' +
+                "data=" + data +
                 '}';
     }
 }

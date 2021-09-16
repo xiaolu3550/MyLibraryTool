@@ -1,11 +1,13 @@
 package com.xiaolu.mylibrarytool.presenter
 
-import com.xiaolu.mylibrary.log.LogUtil
 import com.xiaolu.mylibrary.mvpbase.IBasePresenter
+import com.xiaolu.mylibrary.net.launchGlobal
+import com.xiaolu.mylibrary.net.onError
+import com.xiaolu.mylibrarytool.bean.LoginRequestBean
+import com.xiaolu.mylibrarytool.bean.parseData
+import com.xiaolu.mylibrarytool.bean.parseListData
 import com.xiaolu.mylibrarytool.contract.ITextContract
 import com.xiaolu.mylibrarytool.model.TextModel
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 /**
  * @describe
@@ -17,16 +19,23 @@ import kotlinx.coroutines.launch
 class TextPresenter : IBasePresenter<ITextContract.View, ITextContract.Model>(),
     ITextContract.Presenter {
     override fun createModel(): ITextContract.Model {
-        return TextModel(MainScope())
+        return TextModel()
     }
 
     override fun getBanner() {
-        val launch = model.mainScope.launch {
-
-           var r =  model.getBanner()
-            LogUtil.d(r.toString())
+        launchGlobal(model.mainScope, {
+            view.onError(onError(it).message.toString())
+        }) {
+            view.onSuccess(model.getBanner().parseListData)
         }
+    }
 
+    override fun login(loginRequestBean: LoginRequestBean) {
+        launchGlobal(model.mainScope, {
+            view.loginError(onError(it).message.toString())
+        }) {
+            view.loginSuccess(model.login(loginRequestBean).parseData)
+        }
     }
 
 }

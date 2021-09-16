@@ -13,11 +13,6 @@ import io.reactivex.Observable;
 public interface DemoContract {
     interface Model extends IModel {
 
-        Observable<BaseObjectBean<GetVerifyCodeBean>> getVerifyCode(String phoneNumber, String businessType);
-
-        Observable<BaseObjectBean<LoginBean>> login(String loginName, String password, String loginType, String verifyCode);
-
-        Observable<BaseObjectBean<RegisterBean>> register(String phoneNumber, String verifyCode, String password, String confirmPassword, String loginType);
     }
 
     interface View extends IView {
@@ -27,10 +22,6 @@ public interface DemoContract {
     }
 
     interface Presenter extends IPresenter<View> {
-        void getVerifyCode(String phoneNumber, String businessType);
 
-        void login(String login, String password, String loginType, String verifyCode);
-
-        void register(String phoneNumber, String verifyCode, String password, String confirmPassword, String loginType);
     }
 }

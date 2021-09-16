@@ -15,6 +15,6 @@ package com.xiaolu.mylibrary.mvpbase;
  * @Version: 1.0
  * ================================================
  */
-public interface IModel extends BaseModel{
+public interface IModel extends IBaseModel{
 
 }

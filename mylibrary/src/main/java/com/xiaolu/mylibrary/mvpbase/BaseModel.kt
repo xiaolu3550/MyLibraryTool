@@ -1,13 +1,8 @@
 package com.xiaolu.mylibrary.mvpbase
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.MainScope
 
-
-public interface BaseModel {
-    var mainScope: CoroutineScope
-    fun onDestroy() {
-        mainScope.cancel()
-    }
-
+open class BaseModel : IBaseModel {
+    override var mainScope: CoroutineScope = MainScope()
 }

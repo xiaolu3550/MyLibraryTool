@@ -99,11 +99,11 @@ public class MainActivity extends BaseMvpActivity<ActivityMainBinding
             switch ((view1).getId()) {
                 case R.id.btn_getVerifyCode:
                     LogUtil.d("1111");
-                    mPresenter.getVerifyCode("15905140019", "1");
+
                     break;
                 case R.id.btn_login:
                     LogUtil.d("2222");
-                    mPresenter.login("15905140019", "123456", "2", "");
+
                     break;
                 default:
                     break;
@@ -126,7 +126,7 @@ public class MainActivity extends BaseMvpActivity<ActivityMainBinding
                 break;
             case R.id.btn_re:
                 String code = getBinding().etCode.getText().toString().trim();
-                mPresenter.register("15905140019", code, "123456", "123456", "2");
+
                 break;
             case R.id.btn_open_dialog:
                 CustomDialog.Builder customDialog = new CustomDialog.Builder(mContext, R.layout.demo_dialog);

@@ -11,15 +11,9 @@ public class BaseListBean<T> {
     private String code;
     private String msg;
     private List<T> data;
-    private String sign;
-    private String merchantId;
 
-    public List<T> getData() {
-        return data;
-    }
-
-    public void setData(List<T> data) {
-        this.data = data;
+    public boolean isSuccess() {
+        return code.equals("000000");
     }
 
     public String getCode() {
@@ -38,31 +32,18 @@ public class BaseListBean<T> {
         this.msg = msg;
     }
 
-
-    public String getSign() {
-        return sign;
+    public List<T> getData() {
+        return data;
     }
 
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
-    public String getMerchantId() {
-        return merchantId;
-    }
-
-    public void setMerchantId(String merchantId) {
-        this.merchantId = merchantId;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 
     @Override
     public String toString() {
-        return "BaseObjectBean{" +
-                "code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                ", sign='" + sign + '\'' +
-                ", merchantId='" + merchantId + '\'' +
+        return "BaseListBean{" +
+                "data=" + data +
                 '}';
     }
 }

@@ -1,232 +1,67 @@
 package com.xiaolu.mylibrarytool.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-public class LoginBean implements Parcelable {
+public class LoginBean {
 
     /**
-     * searchValue : null
-     * createBy : null
-     * createTime : 2020-02-26 14:08:58
-     * updateBy : null
-     * updateTime : null
-     * remark : null
-     * params : nullƒ
-     * ids : null
-     * del : null
-     * userId : 6887f05bbfa34b0cad4dc2c1b69d648f
-     * userName : 默认用户
-     * loginName : 15636808536
-     * password :
-     * phoneNumber : 15636808536
-     * avatar : null
-     * email : null
-     * status : 0
-     * delFlag : 0
-     * balance : 0
-     * token : ba2e83de9db1446991f6d429c0f0977d
+     * id : 11
+     * uid :
+     * token : 3faaaf2c1cd8439d9ea5a79ff23cbb66
+     * status : 1
+     * phone : 15636808536
+     * address : 15wmugcCqxvT3jm1GMURzVcWdvbkgFzu2a
+     * userId : 09673825
+     * headUrl :
+     * nickName : 昵称09673825
+     * biAccount :
+     * aliAccount :
+     * wxAccount :
+     * inviteCode : YizOZb
+     * registerCode :
+     * payPassword :
+     * createTime : 1629266161591
+     * updateTime : 1629943920744
+     * area : +86
+     * lastLogin : 1629943920728
+     * birthday : null
+     * sex : 1
      */
 
-    private Object searchValue;
-    private Object createBy;
-    private String createTime;
-    private Object updateBy;
-    private Object updateTime;
-    private Object remark;
-    private Object params;
-    private Object ids;
-    private Object del;
-    private String userId;
-    private String userName;
-    private String loginName;
-    private String password;
-    private String phoneNumber;
-    private Object avatar;
-    private Object email;
-    private int status;
-    private int delFlag;
-    private int balance;
+    private int id;
+    private String uid;
     private String token;
+    private int status;
+    private String phone;
+    private String address;
+    private String userId;
+    private String headUrl;
+    private String nickName;
+    private String biAccount;
+    private String aliAccount;
+    private String wxAccount;
+    private String inviteCode;
+    private String registerCode;
+    private String payPassword;
+    private long createTime;
+    private long updateTime;
+    private String area;
+    private long lastLogin;
+    private String birthday;
+    private int sex;
 
-    public LoginBean() {
+    public int getId() {
+        return id;
     }
 
-    public LoginBean(Parcel in) {
-        createTime = in.readString();
-        userId = in.readString();
-        userName = in.readString();
-        loginName = in.readString();
-        password = in.readString();
-        phoneNumber = in.readString();
-        status = in.readInt();
-        delFlag = in.readInt();
-        balance = in.readInt();
-        token = in.readString();
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public static final Creator<LoginBean> CREATOR = new Creator<LoginBean>() {
-        @Override
-        public LoginBean createFromParcel(Parcel in) {
-            return new LoginBean(in);
-        }
-
-        @Override
-        public LoginBean[] newArray(int size) {
-            return new LoginBean[size];
-        }
-    };
-
-    public Object getSearchValue() {
-        return searchValue;
+    public String getUid() {
+        return uid;
     }
 
-    public void setSearchValue(Object searchValue) {
-        this.searchValue = searchValue;
-    }
-
-    public Object getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Object createBy) {
-        this.createBy = createBy;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public Object getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(Object updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public Object getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Object updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Object getRemark() {
-        return remark;
-    }
-
-    public void setRemark(Object remark) {
-        this.remark = remark;
-    }
-
-    public Object getParams() {
-        return params;
-    }
-
-    public void setParams(Object params) {
-        this.params = params;
-    }
-
-    public Object getIds() {
-        return ids;
-    }
-
-    public void setIds(Object ids) {
-        this.ids = ids;
-    }
-
-    public Object getDel() {
-        return del;
-    }
-
-    public void setDel(Object del) {
-        this.del = del;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Object getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Object avatar) {
-        this.avatar = avatar;
-    }
-
-    public Object getEmail() {
-        return email;
-    }
-
-    public void setEmail(Object email) {
-        this.email = email;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public int getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(int delFlag) {
-        this.delFlag = delFlag;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getToken() {
@@ -237,48 +72,174 @@ public class LoginBean implements Parcelable {
         this.token = token;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getHeadUrl() {
+        return headUrl;
+    }
+
+    public void setHeadUrl(String headUrl) {
+        this.headUrl = headUrl;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getBiAccount() {
+        return biAccount;
+    }
+
+    public void setBiAccount(String biAccount) {
+        this.biAccount = biAccount;
+    }
+
+    public String getAliAccount() {
+        return aliAccount;
+    }
+
+    public void setAliAccount(String aliAccount) {
+        this.aliAccount = aliAccount;
+    }
+
+    public String getWxAccount() {
+        return wxAccount;
+    }
+
+    public void setWxAccount(String wxAccount) {
+        this.wxAccount = wxAccount;
+    }
+
+    public String getInviteCode() {
+        return inviteCode;
+    }
+
+    public void setInviteCode(String inviteCode) {
+        this.inviteCode = inviteCode;
+    }
+
+    public String getRegisterCode() {
+        return registerCode;
+    }
+
+    public void setRegisterCode(String registerCode) {
+        this.registerCode = registerCode;
+    }
+
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
+    }
+
+    public long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(long createTime) {
+        this.createTime = createTime;
+    }
+
+    public long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(long updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public long getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(long lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
         return "LoginBean{" +
-                "searchValue=" + searchValue +
-                ", createBy=" + createBy +
-                ", createTime='" + createTime + '\'' +
-                ", updateBy=" + updateBy +
-                ", updateTime=" + updateTime +
-                ", remark=" + remark +
-                ", params=" + params +
-                ", ids=" + ids +
-                ", del=" + del +
-                ", userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
-                ", loginName='" + loginName + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", avatar=" + avatar +
-                ", email=" + email +
-                ", status=" + status +
-                ", delFlag=" + delFlag +
-                ", balance=" + balance +
+                "id=" + id +
+                ", uid='" + uid + '\'' +
                 ", token='" + token + '\'' +
+                ", status=" + status +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", userId='" + userId + '\'' +
+                ", headUrl='" + headUrl + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", biAccount='" + biAccount + '\'' +
+                ", aliAccount='" + aliAccount + '\'' +
+                ", wxAccount='" + wxAccount + '\'' +
+                ", inviteCode='" + inviteCode + '\'' +
+                ", registerCode='" + registerCode + '\'' +
+                ", payPassword='" + payPassword + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", area='" + area + '\'' +
+                ", lastLogin=" + lastLogin +
+                ", birthday='" + birthday + '\'' +
+                ", sex=" + sex +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(createTime);
-        dest.writeString(userId);
-        dest.writeString(userName);
-        dest.writeString(loginName);
-        dest.writeString(password);
-        dest.writeString(phoneNumber);
-        dest.writeInt(status);
-        dest.writeInt(delFlag);
-        dest.writeInt(balance);
-        dest.writeString(token);
     }
 }

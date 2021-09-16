@@ -3,6 +3,7 @@ package com.xiaolu.mylibrarytool.contract
 import com.xiaolu.mylibrary.mvpbase.IModel
 import com.xiaolu.mylibrary.mvpbase.IPresenter
 import com.xiaolu.mylibrary.mvpbase.IView
+import com.xiaolu.mylibrarytool.bean.*
 
 /**
  * @describe
@@ -12,11 +13,22 @@ import com.xiaolu.mylibrary.mvpbase.IView
  */
 
 interface ITextContract {
-    interface View : IView {}
+    interface View : IView {
+        fun onSuccess(any: MutableList<BannerBean>?)
+        fun onError(string: String)
+
+        fun loginSuccess(any: LoginBean)
+        fun loginError(string: String)
+
+    }
+
     interface Presenter : IPresenter<View> {
         fun getBanner()
+        fun login(loginRequestBean: LoginRequestBean)
     }
+
     interface Model : IModel {
-        suspend fun getBanner() :Any
+        suspend fun getBanner(): BaseListBean<BannerBean>
+        suspend fun login(loginRequestBean: LoginRequestBean): BaseObjectBean<LoginBean>
     }
 }

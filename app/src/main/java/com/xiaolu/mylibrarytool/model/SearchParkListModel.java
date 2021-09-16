@@ -27,12 +27,5 @@ import io.reactivex.Observable;
  * ================================================
  */
 public class SearchParkListModel implements SearchParkListContract.SearchParkListModel {
-    @Override
-    public Observable<BaseListBean<SearchMonthParkListBean>> searchParkList(String name, String longitude, String latitude) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", name);
-        map.put("longitude", longitude);
-        map.put("latitude", latitude);
-        return App.getClient().searchParkList(RequestBodyUtils.setRequestBody_JSON(map));
-    }
+
 }

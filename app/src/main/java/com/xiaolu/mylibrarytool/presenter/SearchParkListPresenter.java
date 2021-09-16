@@ -41,25 +41,6 @@ public class SearchParkListPresenter extends BasePresenter<SearchParkListContrac
     @Override
     public void searchParkList(String name, String longitude, String latitude) {
         getView().onLoad();
-        searchParkListModel.searchParkList(name, longitude, latitude)
-                .compose(RxScheduler.floIoMain(0, TimeUnit.SECONDS))
-                .compose(getView().bindToLifecycleS())
-                .subscribe(new RxObserver<BaseListBean<SearchMonthParkListBean>>(getClass().getName()) {
-                    @Override
-                    public void onSuccess(@NonNull BaseListBean<SearchMonthParkListBean> searchMonthParkListBeanBaseListBean) {
-                        if (isViewAttached()) {
-                            if (mSearchMonthParkListBean.getCode().equals("0")) {
-                                getView().searchParkListSuccess(mSearchMonthParkListBean);
-                            } else {
-                                getView().onError(mSearchMonthParkListBean.getMsg());
-                            }
-                        }
-                    }
 
-                    @Override
-                    public void onErrors(@NonNull Throwable e) {
-                        getView().onError(e.getMessage());
-                    }
-                });
     }
 }
